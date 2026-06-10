@@ -19,7 +19,7 @@
         <p class="hero__welcome">Welcome back, {{ display_name }}.</p>
         <div class="hero__actions">
           <a href="{{ url_for('chat.chat') }}" class="btn btn--primary btn--lg">Continue Studying</a>
-          <a href="{{ url_for('analysis.analysis') }}" class="btn btn--outline btn--lg">View My Progress</a>
+          <a href="{{ url_for('analysis.dashboard') }}" class="btn btn--outline btn--lg">View My Progress</a>
         </div>
       {% else %}
         <div class="hero__actions">
