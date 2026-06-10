@@ -1,7 +1,10 @@
 """Chat blueprint routes — the main tutoring interface."""
 
+import re
+
 from flask import current_app, jsonify, redirect, render_template, request, session, url_for
 
+from app.analysis.weak_area_detector import update_weak_areas
 from app.auth.helpers import login_required
 from app.chat import chat_bp
 from app.chat.claude_client import call_claude
@@ -9,6 +12,24 @@ from app.chat.context_manager import maybe_compress
 from app.chat.prompt_builder import build_messages
 from app.extensions import limiter
 from app.storage import load_session, save_session
+
+_META_RE = re.compile(
+    r"\nRATIO_META type=(\S+) result=(correct|incorrect|neutral)\s*$",
+    re.IGNORECASE,
+)
+
+
+def _extract_meta(text: str) -> tuple[str, str | None, str | None]:
+    """Strip the RATIO_META tracking line from the response and return its fields.
+
+    Returns:
+        (clean_text, question_type_or_None, result_or_None)
+    """
+    match = _META_RE.search(text)
+    if not match:
+        return text, None, None
+    clean = text[: match.start()].rstrip()
+    return clean, match.group(1), match.group(2).lower()
 
 
 @chat_bp.route("/chat", methods=["GET"])
@@ -56,11 +77,18 @@ def send_message():
         cache_dir=current_app.config["CACHE_DIR"],
     )
 
+    # Strip the hidden tracking tag and use it to update weak areas.
+    clean_response, qtype, result = _extract_meta(response_text)
+    if result == "incorrect" and qtype:
+        session_data = update_weak_areas(
+            session_data, user_input, was_correct=False, question_type=qtype
+        )
+
     session_data.setdefault("turns", []).append({"role": "user", "content": user_input})
-    session_data["turns"].append({"role": "assistant", "content": response_text})
+    session_data["turns"].append({"role": "assistant", "content": clean_response})
     save_session(email, session_data)
 
-    return jsonify({"response": response_text})
+    return jsonify({"response": clean_response})
 
 
 @chat_bp.route("/history")
