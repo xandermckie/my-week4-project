@@ -1,6 +1,7 @@
 """Chat blueprint routes — the main tutoring interface."""
 
 import re
+from datetime import date
 
 from flask import current_app, jsonify, redirect, render_template, request, session, url_for
 
@@ -17,6 +18,26 @@ _META_RE = re.compile(
     r"\nRATIO_META type=(\S+) result=(correct|incorrect|neutral)\s*$",
     re.IGNORECASE,
 )
+
+
+DAILY_LIMIT = 25
+
+
+def _check_and_increment_quota(session_data: dict) -> tuple[bool, int]:
+    """Check the daily message quota and increment if under the limit.
+
+    Returns:
+        (allowed, remaining_after_increment)
+    """
+    today = date.today().isoformat()
+    usage = session_data.setdefault("chat_usage", {"date": today, "count": 0})
+    if usage.get("date") != today:
+        usage["date"] = today
+        usage["count"] = 0
+    if usage["count"] >= DAILY_LIMIT:
+        return False, 0
+    usage["count"] += 1
+    return True, DAILY_LIMIT - usage["count"]
 
 
 def _extract_meta(text: str) -> tuple[str, str | None, str | None]:
@@ -58,6 +79,13 @@ def send_message():
         return jsonify({"error": "Message too long (max 3,000 characters)."}), 400
 
     session_data = load_session(email)
+
+    allowed, remaining = _check_and_increment_quota(session_data)
+    if not allowed:
+        return jsonify({
+            "error": "You have reached the 25 message daily limit for the free plan. Your limit resets at midnight."
+        }), 429
+
     session_data = maybe_compress(
         session_data,
         threshold=current_app.config["CONTEXT_COMPRESSION_THRESHOLD"],
@@ -88,7 +116,7 @@ def send_message():
     session_data["turns"].append({"role": "assistant", "content": clean_response})
     save_session(email, session_data)
 
-    return jsonify({"response": clean_response})
+    return jsonify({"response": clean_response, "remaining": remaining})
 
 
 @chat_bp.route("/history")

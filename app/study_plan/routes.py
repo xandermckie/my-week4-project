@@ -2,12 +2,15 @@
 
 from datetime import date
 
-from flask import flash, redirect, render_template, request, session, url_for
+from flask import flash, make_response, redirect, render_template, request, session, url_for
 
 from app.analysis.weak_area_detector import get_ranked_weak_areas
 from app.auth.helpers import login_required
+from app.email_service import send_plan_email
+from app.extensions import limiter
 from app.storage import load_session, load_user, save_user
 from app.study_plan import study_plan_bp
+from app.study_plan.calendar_builder import build_ics
 from app.study_plan.plan_generator import generate_study_plan
 
 
@@ -59,7 +62,6 @@ def plan():
             return redirect(url_for("study_plan.plan"))
 
         if stored_plan and not fix_used and not is_fix:
-            # They somehow POSTed the generate form again without using the fix path.
             flash("You have already generated a plan. Use the date correction option if needed.")
             return redirect(url_for("study_plan.plan"))
 
@@ -71,6 +73,9 @@ def plan():
         else:
             user["study_plan_fix_used"] = False
         save_user(email, user)
+
+        send_plan_email(email, generated, target_date)
+
         return redirect(url_for("study_plan.plan"))
 
     return render_template(
@@ -81,3 +86,49 @@ def plan():
         fix_used=fix_used,
         has_plan=bool(stored_plan),
     )
+
+
+@study_plan_bp.route("/study-plan/export.ics", methods=["POST"])
+@login_required
+@limiter.limit("20 per hour")
+def export_ics():
+    """Generate and download a .ics calendar file for the user's study schedule."""
+    email = session["email"]
+    user = load_user(email)
+    session_data = load_session(email)
+    weak_areas = get_ranked_weak_areas(session_data)
+
+    exam_date = user.get("study_plan_exam_date") or user.get("target_exam_date")
+
+    selected_days = request.form.getlist("days")
+    start_time = request.form.get("start_time", "19:00")
+    duration = int(request.form.get("duration", "60"))
+
+    ics_bytes = build_ics(exam_date, weak_areas, selected_days, start_time, duration)
+
+    response = make_response(ics_bytes)
+    response.headers["Content-Type"] = "text/calendar; charset=utf-8"
+    response.headers["Content-Disposition"] = "attachment; filename=ratio_study_plan.ics"
+    return response
+
+
+@study_plan_bp.route("/study-plan/send-reminder", methods=["POST"])
+@login_required
+@limiter.limit("5 per hour")
+def send_reminder():
+    """Re-send the stored study plan to the user's email address."""
+    email = session["email"]
+    user = load_user(email)
+    plan_text = user.get("study_plan_content")
+    exam_date = user.get("study_plan_exam_date")
+
+    if not plan_text:
+        flash("You do not have a study plan yet. Generate one first.")
+        return redirect(url_for("study_plan.plan"))
+
+    sent = send_plan_email(email, plan_text, exam_date)
+    if sent:
+        flash("Study plan sent to your email.")
+    else:
+        flash("Email is not configured. Ask the site admin to set up MAIL_PASSWORD in the environment.")
+    return redirect(url_for("study_plan.plan"))

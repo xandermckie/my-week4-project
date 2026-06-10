@@ -5,6 +5,14 @@
   const input = document.getElementById("chatInput");
   const thread = document.getElementById("chatThread");
   const sendBtn = document.getElementById("sendBtn");
+  const quotaLabel = document.getElementById("quotaLabel");
+
+  function updateQuota(remaining) {
+    if (!quotaLabel) return;
+    if (remaining === undefined || remaining === null) return;
+    quotaLabel.textContent = remaining + " of 25 messages remaining today";
+    quotaLabel.className = "chat-quota" + (remaining <= 5 ? " chat-quota--low" : "");
+  }
 
   if (!form) return;
 
@@ -68,9 +76,10 @@
       .then(function (data) {
         thread.removeChild(loadingBubble);
         if (data.error) {
-          appendMessage("system", "Error: " + data.error);
+          appendMessage("system", data.error);
         } else {
           appendMessage("assistant", data.response);
+          updateQuota(data.remaining);
         }
       })
       .catch(function (err) {
@@ -81,6 +90,12 @@
       .finally(function () {
         setLoading(false);
       });
+  });
+
+  /* Auto-expand textarea as user types. */
+  input.addEventListener("input", function () {
+    input.style.height = "auto";
+    input.style.height = Math.min(input.scrollHeight, 160) + "px";
   });
 
   /* Allow Shift+Enter for newline, Enter to submit. */

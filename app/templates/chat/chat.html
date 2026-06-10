@@ -22,9 +22,12 @@
     <button class="btn btn--primary" type="submit" id="sendBtn">Send</button>
   </form>
 
-  <form method="POST" action="{{ url_for('chat.clear_history') }}" class="chat-clear">
-    <button class="btn btn--ghost" type="submit">Clear History</button>
-  </form>
+  <div class="chat-meta">
+    <span id="quotaLabel" class="chat-quota"></span>
+    <form method="POST" action="{{ url_for('chat.clear_history') }}" style="display:inline;">
+      <button class="btn btn--ghost btn--sm" type="submit">Clear History</button>
+    </form>
+  </div>
 </div>
 {% endblock %}
 

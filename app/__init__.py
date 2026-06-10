@@ -5,7 +5,7 @@ import os
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 
 from app.config import get_config
-from app.extensions import get_cache, limiter
+from app.extensions import get_cache, limiter, mail
 
 
 def create_app() -> Flask:
@@ -22,6 +22,7 @@ def create_app() -> Flask:
     _ensure_data_dirs(app)
 
     limiter.init_app(app)
+    mail.init_app(app)
 
     from app.auth import auth_bp
     from app.chat import chat_bp

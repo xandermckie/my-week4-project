@@ -23,7 +23,11 @@
       </svg>
     </a>
 
-    <div class="nav__links">
+    <button class="nav__hamburger" id="navHamburger" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="nav__links" id="navLinks">
       {% if session.get('email') %}
         <a href="{{ url_for('chat.chat') }}">Tutor</a>
         <a href="{{ url_for('analysis.dashboard') }}">Analysis</a>
@@ -60,6 +64,18 @@
     </span>
   </footer>
 
+  <script src="{{ url_for('static', filename='js/pomodoro.js') }}"></script>
+  <script>
+    (function () {
+      var btn = document.getElementById('navHamburger');
+      var links = document.getElementById('navLinks');
+      if (!btn || !links) return;
+      btn.addEventListener('click', function () {
+        var open = links.classList.toggle('nav__links--open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    })();
+  </script>
   {% block scripts %}{% endblock %}
 </body>
 </html>

@@ -6,8 +6,10 @@ import diskcache
 from cryptography.fernet import Fernet
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+from flask_mail import Mail
 
 limiter = Limiter(key_func=get_remote_address)
+mail = Mail()
 
 
 def get_cache(cache_dir: str) -> diskcache.Cache:

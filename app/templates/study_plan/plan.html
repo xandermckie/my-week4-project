@@ -34,8 +34,45 @@
     <script type="text/plain" id="plan-raw">{{ generated_plan }}</script>
     <div class="plan-output" id="plan-output"></div>
 
+    {# Calendar export #}
+    <div class="plan-export">
+      <p class="plan-export__heading">Export to Calendar</p>
+      <form method="POST" action="{{ url_for('study_plan.export_ics') }}" class="export-form" id="exportForm">
+        <div class="export-days">
+          <span class="export-days__label">Study days</span>
+          {% for abbr, label in [('mon','Mon'),('tue','Tue'),('wed','Wed'),('thu','Thu'),('fri','Fri'),('sat','Sat'),('sun','Sun')] %}
+          <label class="day-toggle">
+            <input type="checkbox" name="days" value="{{ abbr }}"{% if abbr in ['mon','wed','fri'] %} checked{% endif %}>
+            <span>{{ label }}</span>
+          </label>
+          {% endfor %}
+        </div>
+        <div class="export-row">
+          <label class="form-label" for="start_time">Start time</label>
+          <input class="form-input form-input--inline" type="time" id="start_time" name="start_time" value="19:00">
+          <label class="form-label" for="duration" style="margin-left:.75rem;">Duration</label>
+          <select class="form-input form-input--inline" id="duration" name="duration" style="width:auto;">
+            <option value="30">30 min</option>
+            <option value="45">45 min</option>
+            <option value="60" selected>60 min</option>
+            <option value="90">90 min</option>
+          </select>
+        </div>
+        <div class="export-actions">
+          <button class="btn btn--primary" type="submit">Download .ics (Apple / Outlook)</button>
+          <a class="btn btn--outline" id="gcalLink" href="#" target="_blank" rel="noopener">Add to Google Calendar</a>
+        </div>
+      </form>
+    </div>
+
+    {# Email reminder #}
+    <div class="plan-actions">
+      <form method="POST" action="{{ url_for('study_plan.send_reminder') }}" style="display:inline;">
+        <button class="btn btn--ghost" type="submit">Email me this plan</button>
+      </form>
+    </div>
+
     {% if not fix_used %}
-      {# One free date correction remaining #}
       <div class="plan-fix">
         <p class="plan-fix__label">Need to correct your exam date? You have <strong>1 correction remaining</strong>.</p>
         <form method="POST" action="{{ url_for('study_plan.plan') }}" class="plan-form">
@@ -68,6 +105,53 @@
     if (raw && out && typeof marked !== 'undefined' && typeof DOMPurify !== 'undefined') {
       out.innerHTML = DOMPurify.sanitize(marked.parse(raw.textContent));
     }
+  })();
+
+  // Build Google Calendar link for the next chosen study day.
+  (function () {
+    var form = document.getElementById('exportForm');
+    var gcal = document.getElementById('gcalLink');
+    if (!form || !gcal) return;
+
+    function updateGcalLink() {
+      var days = ['sun','mon','tue','wed','thu','fri','sat'];
+      var checked = Array.from(form.querySelectorAll('input[name="days"]:checked')).map(function(c){ return c.value; });
+      var timeVal = form.querySelector('#start_time').value || '19:00';
+      var dur = parseInt(form.querySelector('#duration').value) || 60;
+
+      // Find the next occurrence of any checked day.
+      var today = new Date();
+      var target = null;
+      for (var offset = 0; offset < 14; offset++) {
+        var d = new Date(today);
+        d.setDate(today.getDate() + offset);
+        var abbr = days[d.getDay()];
+        if (checked.indexOf(abbr) !== -1) { target = d; break; }
+      }
+      if (!target) { gcal.href = '#'; return; }
+
+      var parts = timeVal.split(':');
+      var h = parseInt(parts[0]), m = parseInt(parts[1] || 0);
+      function pad(n){ return String(n).padStart(2,'0'); }
+      var yyyymmdd = target.getFullYear() + pad(target.getMonth()+1) + pad(target.getDate());
+      var startStr = yyyymmdd + 'T' + pad(h) + pad(m) + '00';
+      var endDate = new Date(target);
+      endDate.setMinutes(endDate.getMinutes() + dur);
+      var eh = endDate.getHours(), em = endDate.getMinutes();
+      var endStr = yyyymmdd + 'T' + pad(eh) + pad(em) + '00';
+
+      var params = new URLSearchParams({
+        action: 'TEMPLATE',
+        text: 'LSAT Study Session',
+        dates: startStr + '/' + endStr,
+        details: 'Study session from your Ratio LSAT study plan.',
+        recur: 'RRULE:FREQ=WEEKLY'
+      });
+      gcal.href = 'https://calendar.google.com/calendar/render?' + params.toString();
+    }
+
+    form.addEventListener('change', updateGcalLink);
+    updateGcalLink();
   })();
 </script>
 {% endblock %}
