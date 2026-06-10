@@ -45,6 +45,11 @@
     const message = input.value.trim();
     if (!message) return;
 
+    if (message.length > 3000) {
+      appendMessage("system", "Message too long. Please keep messages under 3,000 characters.");
+      return;
+    }
+
     appendMessage("user", message);
     input.value = "";
     setLoading(true);

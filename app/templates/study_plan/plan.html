@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Study Plan — Ratio{% endblock %}
+{% block title %}Study Plan | Ratio{% endblock %}
 
 {% block content %}
 <div class="page">
@@ -48,7 +48,7 @@
             name="target_date"
             value="{{ target_date or '' }}"
           >
-          <button class="btn btn--ghost" type="submit">Correct my exam date — 1 use remaining</button>
+          <button class="btn btn--ghost" type="submit">Correct my exam date (1 use remaining)</button>
         </form>
       </div>
     {% else %}
@@ -56,4 +56,18 @@
     {% endif %}
   {% endif %}
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/marked@15.0.12/marked.min.js" integrity="sha384-948ahk4ZmxYVYOc+rxN1H2gM1EJ2Duhp7uHtZ4WSLkV4Vtx5MUqnV+l7u9B+jFv+" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.4.8/dist/purify.min.js" integrity="sha384-jrsBdrv4eDpEYIq32u13DPbvB6tRmqIDnA6UlgFBoexpetaiWi7g/VbfMEL1WVen" crossorigin="anonymous"></script>
+<script>
+  (function () {
+    var raw = document.getElementById('plan-raw');
+    var out = document.getElementById('plan-output');
+    if (raw && out && typeof marked !== 'undefined' && typeof DOMPurify !== 'undefined') {
+      out.innerHTML = DOMPurify.sanitize(marked.parse(raw.textContent));
+    }
+  })();
+</script>
 {% endblock %}

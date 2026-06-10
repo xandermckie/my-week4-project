@@ -39,10 +39,17 @@ def create_app() -> Flask:
 
     @app.route("/")
     def index():
-        """Show the marketing homepage for guests; redirect logged-in users to chat."""
-        if session.get("email"):
-            return redirect(url_for("chat.chat"))
+        """Show the marketing homepage."""
         return render_template("home.html")
+
+    @app.after_request
+    def set_security_headers(response):
+        """Attach security headers to every response."""
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["X-Frame-Options"] = "DENY"
+        response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+        response.headers["Permissions-Policy"] = "geolocation=(), microphone=()"
+        return response
 
     @app.errorhandler(413)
     def file_too_large(e):

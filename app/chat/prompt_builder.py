@@ -1,5 +1,7 @@
 """Builds the system and user messages sent to Claude for each chat turn."""
 
+import re
+
 SYSTEM_PROMPT = """You are an expert LSAT tutor. When a student submits a question, response, or study note, always reply with a structured coaching breakdown using EXACTLY this format:
 
 **Question Type:** [Logical Reasoning / Analytical Reasoning / Reading Comprehension / Other]
@@ -13,7 +15,22 @@ SYSTEM_PROMPT = """You are an expert LSAT tutor. When a student submits a questi
 
 Be concise, direct, and encouraging. Avoid jargon that isn't standard LSAT terminology. If the student's answer is included, evaluate whether it is correct and explain why before giving the breakdown.
 
-IMPORTANT: If the student's message is not related to LSAT preparation, logical reasoning, reading comprehension, or analytical reasoning, respond ONLY with: "I can only help with LSAT preparation. Please paste an LSAT question or describe a concept you are studying." Do not answer off-topic questions under any circumstances."""
+IMPORTANT: You may ONLY respond to messages about LSAT preparation, logical reasoning, reading comprehension, analytical reasoning, or follow-up clarifications about a previous response (e.g. "explain that more simply", "I don't understand step 2", "break that down further", "can you simplify that?"). If the message is clearly off-topic and unrelated to LSAT study, respond ONLY with: "I can only help with LSAT preparation. Please paste an LSAT question or describe a concept you are studying." Do not answer off-topic questions under any circumstances."""
+
+_INJECTION_PATTERNS = re.compile(
+    r"(ignore previous instructions?|disregard your instructions?|new instructions?:|"
+    r"</?system>|you are now a)",
+    re.IGNORECASE,
+)
+_FAKE_DELIMITERS = re.compile(r"[#=\-]{3,}")
+
+
+def _sanitize_input(text: str) -> str:
+    """Strip null bytes, fake section delimiters, and known prompt-injection phrases."""
+    text = text.replace("\x00", "")
+    text = _FAKE_DELIMITERS.sub(" ", text)
+    text = _INJECTION_PATTERNS.sub("[redacted]", text)
+    return text
 
 
 def build_messages(
@@ -56,6 +73,6 @@ def build_messages(
         })
 
     messages.extend(turns)
-    messages.append({"role": "user", "content": user_input})
+    messages.append({"role": "user", "content": _sanitize_input(user_input)})
 
     return messages, system

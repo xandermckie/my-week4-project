@@ -32,7 +32,9 @@ def send_message():
         return jsonify({"error": "Message is required."}), 400
 
     email = session["email"]
-    user_input = data["message"].strip()
+    user_input = data["message"].strip().replace("\x00", "")
+    if len(user_input) > 3000:
+        return jsonify({"error": "Message too long (max 3,000 characters)."}), 400
 
     session_data = load_session(email)
     session_data = maybe_compress(
