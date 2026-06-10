@@ -36,10 +36,14 @@ def generate_study_plan(weak_areas: list[tuple[str, int]], target_date: str | No
     try:
         client = anthropic.Anthropic(api_key=api_key)
         response = client.messages.create(
-            model="claude-sonnet-4-6",
+            model="claude-haiku-4-5-20251001",
             max_tokens=1500,
             messages=[{"role": "user", "content": prompt}],
         )
         return response.content[0].text
-    except anthropic.APIError as e:
-        return f"Could not generate study plan at this time. Please try again later. ({e})"
+    except anthropic.APIConnectionError:
+        return "Could not reach the API. Please check your internet connection."
+    except anthropic.RateLimitError:
+        return "Rate limit reached. Please wait a moment and try again."
+    except anthropic.APIStatusError as e:
+        return f"Could not generate study plan (error {e.status_code}). Please try again later."

@@ -8,6 +8,18 @@
 
   if (!form) return;
 
+  /* Load prior chat history when the page opens. */
+  document.addEventListener("DOMContentLoaded", function () {
+    fetch("/history")
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        (data.turns || []).forEach(function (turn) {
+          appendMessage(turn.role, turn.content);
+        });
+      })
+      .catch(function () {});
+  });
+
   function appendMessage(role, text) {
     /* Add a new message bubble to the thread. */
     const div = document.createElement("div");

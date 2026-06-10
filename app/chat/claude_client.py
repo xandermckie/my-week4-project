@@ -53,7 +53,7 @@ def call_claude(messages: list[dict], system: str, cache_dir: str) -> str:
     try:
         client = _get_client()
         response = client.messages.create(
-            model="claude-sonnet-4-6",
+            model="claude-haiku-4-5-20251001",
             max_tokens=1024,
             system=system,
             messages=messages,
@@ -61,8 +61,14 @@ def call_claude(messages: list[dict], system: str, cache_dir: str) -> str:
         text = response.content[0].text
         cache.set(key, text, expire=86400)  # cache for 24 hours
         return text
-    except anthropic.APIError as e:
-        return _fallback_response(str(e))
+    except anthropic.APIConnectionError:
+        return "Could not reach the Claude API. Please check your internet connection and try again."
+    except anthropic.RateLimitError:
+        return "The tutoring service is busy right now. Please wait a moment and try again."
+    except anthropic.APIStatusError as e:
+        if e.status_code == 401:
+            return "API authentication failed. Please contact support."
+        return _fallback_response(f"API error {e.status_code}: {str(e)}")
 
 
 def _fallback_response(error_detail: str) -> str:
