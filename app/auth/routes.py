@@ -1,4 +1,6 @@
-"""Auth routes — register, login, logout."""
+"""Auth routes — register, login, logout, terms."""
+
+from datetime import datetime, timezone
 
 from flask import redirect, render_template, request, session, url_for
 
@@ -18,8 +20,9 @@ def register():
         email = request.form.get("email", "").strip().lower()
         password = request.form.get("password", "")
         confirm = request.form.get("confirm", "")
+        agreed = request.form.get("terms") == "on"
 
-        errors = validate_register(email, password, confirm)
+        errors = validate_register(email, password, confirm, agreed)
         if not errors:
             if user_exists(email):
                 errors.append("An account with that email already exists.")
@@ -28,6 +31,9 @@ def register():
                     "email": email,
                     "password_hash": hash_password(password),
                     "target_exam_date": None,
+                    "username": "",
+                    "agreed_to_terms_at": datetime.now(timezone.utc).isoformat(),
+                    "birth_year_verified": True,
                 })
                 session["email"] = email
                 return redirect(url_for("chat.chat"))
@@ -61,3 +67,9 @@ def logout():
     """Clear the session and redirect to login."""
     session.clear()
     return redirect(url_for("auth.login"))
+
+
+@auth_bp.route("/terms")
+def terms():
+    """Render the Terms of Service page."""
+    return render_template("auth/terms.html")

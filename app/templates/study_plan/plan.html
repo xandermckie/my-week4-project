@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Study Plan — LSAT Tutor{% endblock %}
+{% block title %}Study Plan — Ratio{% endblock %}
 
 {% block content %}
 <div class="page">
@@ -30,8 +30,9 @@
     <p class="page__empty">Click "Generate Plan" to create a personalized study schedule based on your weak areas.</p>
 
   {% else %}
-    {# Plan exists — show it #}
-    <div class="plan-output">{{ generated_plan | safe }}</div>
+    {# Plan exists — show it; raw markdown parsed client-side #}
+    <script type="text/plain" id="plan-raw">{{ generated_plan }}</script>
+    <div class="plan-output" id="plan-output"></div>
 
     {% if not fix_used %}
       {# One free date correction remaining #}

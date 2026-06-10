@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block title %}Ratio — Reason Sharper. Score Higher.{% endblock %}
+{% block main_class %}main--full{% endblock %}
+
+{% block content %}
+
+{# ── Hero ── #}
+<section style="background: var(--color-bg);">
+  <div class="hero">
+    <div class="hero__copy">
+      <p class="hero__eyebrow">AI-Powered LSAT Prep</p>
+      <h1 class="hero__title">Reason sharper.<br>Score higher.</h1>
+      <p class="hero__body">
+        Ratio is a dedicated AI tutor that breaks down every LSAT question type,
+        identifies where you lose points, and builds a study plan around your exam date.
+        No fluff. Just structured reasoning practice that actually works.
+      </p>
+      <div class="hero__actions">
+        <a href="{{ url_for('auth.register') }}" class="btn btn--primary btn--lg">Get Started — Free</a>
+        <a href="{{ url_for('auth.login') }}" class="btn btn--outline btn--lg">Log In</a>
+      </div>
+      <p class="hero__proof">Built for aspiring lawyers. Powered by Claude AI.</p>
+    </div>
+    <div class="hero__photo" role="img" aria-label="Law student studying at a library desk"></div>
+  </div>
+</section>
+
+{# ── Features ── #}
+<section class="features">
+  <div class="features__inner">
+    <h2 class="features__heading">Everything you need to master the LSAT</h2>
+    <div class="features__grid">
+
+      <div class="feature-card">
+        <svg class="feature-card__icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+        </svg>
+        <p class="feature-card__title">AI Tutor Chat</p>
+        <p class="feature-card__body">Paste any LSAT question and get a structured breakdown — question type, reasoning strategy, common traps, and a memory cue.</p>
+      </div>
+
+      <div class="feature-card">
+        <svg class="feature-card__icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+        </svg>
+        <p class="feature-card__title">Weak Area Analysis</p>
+        <p class="feature-card__body">Ratio tracks every mistake and shows you exactly which question types cost you the most points — so you know where to focus.</p>
+      </div>
+
+      <div class="feature-card">
+        <svg class="feature-card__icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+        </svg>
+        <p class="feature-card__title">Practice Quiz</p>
+        <p class="feature-card__body">Work through LSAT-style questions across all ten question types. Every answer includes a detailed explanation of the reasoning.</p>
+      </div>
+
+      <div class="feature-card">
+        <svg class="feature-card__icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        <p class="feature-card__title">Personalized Study Plan</p>
+        <p class="feature-card__body">Tell Ratio your exam date and it generates a week-by-week plan built around your actual weak areas — not a generic template.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{# ── How it works ── #}
+<section style="background: var(--color-bg);">
+  <div class="how-it-works">
+    <h2 class="how-it-works__heading">Simple by design</h2>
+    <div class="steps">
+      <div class="step">
+        <p class="step__number">01</p>
+        <p class="step__title">Create a free account</p>
+        <p class="step__body">Sign up in seconds. No credit card, no trial period, no noise.</p>
+      </div>
+      <div class="step">
+        <p class="step__number">02</p>
+        <p class="step__title">Practice every day</p>
+        <p class="step__body">Chat through questions, take quizzes, and let Ratio track your patterns over time.</p>
+      </div>
+      <div class="step">
+        <p class="step__number">03</p>
+        <p class="step__title">Watch your weak areas shrink</p>
+        <p class="step__body">Your analysis dashboard updates in real time. Walk into test day knowing exactly where you stand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ── Photo break ── #}
+<div class="photo-break" role="img" aria-label="Law library with bookshelves">
+  <p class="photo-break__quote">"The LSAT tests whether you can think.<br>Ratio teaches you how."</p>
+</div>
+
+{# ── Final CTA ── #}
+<section style="background: var(--color-surface-alt); padding: 4rem 2rem; text-align: center;">
+  <h2 style="font-family: var(--font-serif); font-size: 1.75rem; margin-bottom: .75rem;">Ready to start reasoning sharper?</h2>
+  <p style="color: var(--color-text-muted); margin-bottom: 1.75rem; font-size: 1rem;">Join students who are preparing smarter, not harder.</p>
+  <a href="{{ url_for('auth.register') }}" class="btn btn--primary btn--lg">Create Your Free Account</a>
+</section>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}Profile — Ratio{% endblock %}
+
+{% block content %}
+<div class="page page--narrow">
+  <h1 class="page__title">Your Profile</h1>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+      <div class="alert alert--{{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endwith %}
+
+  {# Avatar #}
+  <div class="profile-section">
+    <p class="profile-section__title">Profile Picture</p>
+    <img class="avatar-circle" src="{{ url_for('profile.avatar') }}" alt="Your avatar">
+    <form method="POST" action="{{ url_for('profile.upload_avatar') }}" enctype="multipart/form-data" style="margin-top:.75rem; display:flex; gap:.5rem; align-items:center; flex-wrap:wrap;">
+      <input type="file" name="avatar" accept=".png,.jpg,.jpeg" required>
+      <button class="btn btn--ghost" type="submit">Upload</button>
+    </form>
+    <p style="font-size:.8rem; color:#888; margin-top:.4rem;">PNG or JPEG, max 2 MB.</p>
+  </div>
+
+  {# Username #}
+  <div class="profile-section">
+    <p class="profile-section__title">Display Name</p>
+    <form method="POST" action="{{ url_for('profile.profile') }}" style="display:flex; gap:.5rem; flex-wrap:wrap;">
+      <input class="form-input form-input--inline" type="text" name="username" value="{{ username }}" placeholder="Enter a display name" maxlength="50">
+      <button class="btn btn--primary" type="submit">Save</button>
+    </form>
+    <p style="font-size:.8rem; color:#888; margin-top:.4rem;">Account email: {{ email }}</p>
+  </div>
+
+  {# Change Password #}
+  <div class="profile-section">
+    <p class="profile-section__title">Change Password</p>
+    <form method="POST" action="{{ url_for('profile.change_password') }}">
+      <label class="form-label" for="old_password">Current Password</label>
+      <input class="form-input" type="password" id="old_password" name="old_password" required autocomplete="current-password">
+
+      <label class="form-label" for="new_password">New Password</label>
+      <input class="form-input" type="password" id="new_password" name="new_password" required minlength="8" autocomplete="new-password">
+
+      <label class="form-label" for="confirm_password">Confirm New Password</label>
+      <input class="form-input" type="password" id="confirm_password" name="confirm_password" required minlength="8" autocomplete="new-password">
+
+      <button class="btn btn--primary" type="submit" style="margin-top:.75rem;">Update Password</button>
+    </form>
+  </div>
+
+  {# Export #}
+  <div class="profile-section">
+    <p class="profile-section__title">Export Your Data</p>
+    <p style="font-size:.9rem; margin-bottom:.75rem;">Download a CSV file with your chat history, weak area tallies, and study plan information.</p>
+    <a class="btn btn--ghost" href="{{ url_for('profile.export') }}">Download CSV</a>
+  </div>
+
+  {# Terms #}
+  <div class="profile-section">
+    <p class="profile-section__title">User Agreement</p>
+    {% if agreed_at %}
+      <p style="font-size:.85rem; color:#888; margin-bottom:.5rem;">You agreed on {{ agreed_at[:10] }}.</p>
+    {% endif %}
+    <a href="{{ url_for('auth.terms') }}" target="_blank">Read Terms of Service</a>
+  </div>
+
+  {# Delete account #}
+  <div class="profile-section danger-zone">
+    <p class="profile-section__title">Delete Account</p>
+    <details>
+      <summary style="cursor:pointer; font-size:.9rem;">Permanently delete my account and all data</summary>
+      <p style="margin:.75rem 0 .5rem; font-size:.875rem;">This cannot be undone. All chat history, weak areas, your study plan, and your avatar will be deleted.</p>
+      <form method="POST" action="{{ url_for('profile.delete_account') }}">
+        <label class="form-label" for="confirm_text">Type <strong>DELETE</strong> to confirm</label>
+        <input class="form-input form-input--inline" type="text" id="confirm_text" name="confirm_text" placeholder="DELETE" required>
+        <button class="btn btn--danger" type="submit" style="margin-left:.5rem;">Delete My Account</button>
+      </form>
+    </details>
+  </div>
+
+</div>
+{% endblock %}

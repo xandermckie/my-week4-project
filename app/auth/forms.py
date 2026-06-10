@@ -3,13 +3,19 @@
 import re
 
 
-def validate_register(email: str, password: str, confirm: str) -> list[str]:
+def validate_register(
+    email: str,
+    password: str,
+    confirm: str,
+    agreed_to_terms: bool,
+) -> list[str]:
     """Validate registration fields and return a list of error strings.
 
     Args:
         email: Submitted email address.
         password: Submitted password.
         confirm: Password confirmation field.
+        agreed_to_terms: Whether the user checked the terms/age checkbox.
 
     Returns:
         A list of human-readable error messages; empty list means valid.
@@ -21,6 +27,8 @@ def validate_register(email: str, password: str, confirm: str) -> list[str]:
         errors.append("Password must be at least 8 characters.")
     if password != confirm:
         errors.append("Passwords do not match.")
+    if not agreed_to_terms:
+        errors.append("You must confirm you are 13 or older and agree to the Terms of Service.")
     return errors
 
 
