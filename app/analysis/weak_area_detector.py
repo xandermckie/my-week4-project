@@ -33,15 +33,21 @@ def detect_question_type(text: str) -> str | None:
     return None
 
 
-def update_weak_areas(session_data: dict, user_message: str, was_correct: bool) -> dict:
+def update_weak_areas(
+    session_data: dict,
+    user_message: str,
+    was_correct: bool,
+    question_type: str | None = None,
+) -> dict:
     """Update the weak_areas tally in session_data based on a user interaction.
 
     Increments the error count for the detected question type if the answer was wrong.
 
     Args:
         session_data: The full session dict.
-        user_message: The student's most recent message.
+        user_message: The student's most recent message (used for keyword detection fallback).
         was_correct: Whether their answer was correct.
+        question_type: If already known, skip keyword detection and use this directly.
 
     Returns:
         The updated session_data dict.
@@ -49,7 +55,7 @@ def update_weak_areas(session_data: dict, user_message: str, was_correct: bool) 
     if was_correct:
         return session_data
 
-    qtype = detect_question_type(user_message)
+    qtype = question_type or detect_question_type(user_message)
     if qtype:
         weak = session_data.setdefault("weak_areas", {})
         weak[qtype] = weak.get(qtype, 0) + 1

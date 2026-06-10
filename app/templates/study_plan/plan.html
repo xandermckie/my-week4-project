@@ -5,22 +5,54 @@
 <div class="page">
   <h1 class="page__title">Your Study Plan</h1>
 
-  <form method="POST" action="{{ url_for('study_plan.plan') }}" class="plan-form">
-    <label class="form-label" for="target_date">Exam Date (optional)</label>
-    <input
-      class="form-input form-input--inline"
-      type="date"
-      id="target_date"
-      name="target_date"
-      value="{{ target_date or '' }}"
-    >
-    <button class="btn btn--primary" type="submit">Generate Plan</button>
-  </form>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for msg in messages %}
+        <p class="form-error">{{ msg }}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
 
-  {% if generated_plan %}
-    <div class="plan-output">{{ generated_plan | safe }}</div>
-  {% else %}
+  {% if not has_plan %}
+    {# No plan yet — show the generate form #}
+    <form method="POST" action="{{ url_for('study_plan.plan') }}" class="plan-form">
+      <input type="hidden" name="is_fix" value="0">
+      <label class="form-label" for="target_date">Exam Date (optional)</label>
+      <input
+        class="form-input form-input--inline"
+        type="date"
+        id="target_date"
+        name="target_date"
+        value="{{ target_date or '' }}"
+      >
+      <button class="btn btn--primary" type="submit">Generate Plan</button>
+    </form>
     <p class="page__empty">Click "Generate Plan" to create a personalized study schedule based on your weak areas.</p>
+
+  {% else %}
+    {# Plan exists — show it #}
+    <div class="plan-output">{{ generated_plan | safe }}</div>
+
+    {% if not fix_used %}
+      {# One free date correction remaining #}
+      <div class="plan-fix">
+        <p class="plan-fix__label">Need to correct your exam date? You have <strong>1 correction remaining</strong>.</p>
+        <form method="POST" action="{{ url_for('study_plan.plan') }}" class="plan-form">
+          <input type="hidden" name="is_fix" value="1">
+          <label class="form-label" for="target_date_fix">New Exam Date</label>
+          <input
+            class="form-input form-input--inline"
+            type="date"
+            id="target_date_fix"
+            name="target_date"
+            value="{{ target_date or '' }}"
+          >
+          <button class="btn btn--ghost" type="submit">Correct my exam date — 1 use remaining</button>
+        </form>
+      </div>
+    {% else %}
+      <p class="plan-fix__locked">Your plan is locked. You have used your one date correction.</p>
+    {% endif %}
   {% endif %}
 </div>
 {% endblock %}

@@ -36,7 +36,12 @@ def submit_answer():
 
     email = session["email"]
     session_data = load_session(email)
-    session_data = update_weak_areas(session_data, question["stimulus"], result["is_correct"])
+    session_data = update_weak_areas(
+        session_data,
+        question["stimulus"],
+        result["is_correct"],
+        question_type=question.get("type"),
+    )
     save_session(email, session_data)
 
     return render_template("quiz/quiz.html", question=question, result=result)
