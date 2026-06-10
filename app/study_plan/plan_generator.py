@@ -1,9 +1,10 @@
 """Generate a personalized LSAT study plan using Claude."""
 
 import logging
-import os
 
 import anthropic
+
+from app.chat.claude_client import _get_client
 
 logger = logging.getLogger(__name__)
 
@@ -18,10 +19,6 @@ def generate_study_plan(weak_areas: list[tuple[str, int]], target_date: str | No
     Returns:
         A markdown-formatted study plan string, or a user-friendly fallback message on error.
     """
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
-    if not api_key:
-        return "Study plan generation is unavailable. Please contact support."
-
     area_text = (
         "\n".join(f"- {qtype} ({count} errors)" for qtype, count in weak_areas)
         if weak_areas
@@ -37,7 +34,7 @@ def generate_study_plan(weak_areas: list[tuple[str, int]], target_date: str | No
     )
 
     try:
-        client = anthropic.Anthropic(api_key=api_key)
+        client = _get_client()
         response = client.messages.create(
             model="claude-haiku-4-5-20251001",
             max_tokens=1500,

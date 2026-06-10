@@ -14,6 +14,9 @@ logger = logging.getLogger(__name__)
 _client = None
 
 
+_API_TIMEOUT = anthropic.Timeout(connect=5.0, read=25.0, write=10.0, pool=5.0)
+
+
 def _get_client() -> anthropic.Anthropic:
     """Return a shared Anthropic client, creating it on first call."""
     global _client
@@ -23,7 +26,7 @@ def _get_client() -> anthropic.Anthropic:
             raise EnvironmentError(
                 "ANTHROPIC_API_KEY environment variable is not set."
             )
-        _client = anthropic.Anthropic(api_key=api_key)
+        _client = anthropic.Anthropic(api_key=api_key, timeout=_API_TIMEOUT)
     return _client
 
 

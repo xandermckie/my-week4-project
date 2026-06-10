@@ -1,9 +1,10 @@
 """Manages session context compression to keep the Claude context window bounded."""
 
 import logging
-import os
 
 import anthropic
+
+from app.chat.claude_client import _get_client
 
 logger = logging.getLogger(__name__)
 
@@ -51,10 +52,6 @@ def _compress_turns(turns: list[dict], existing_summary: str) -> str:
     Returns:
         A short summary string.
     """
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
-    if not api_key:
-        return _plain_fallback(turns, existing_summary)
-
     content_lines = []
     if existing_summary:
         content_lines.append(f"Prior summary: {existing_summary}\n")
@@ -62,7 +59,7 @@ def _compress_turns(turns: list[dict], existing_summary: str) -> str:
         content_lines.append(f"{t['role'].upper()}: {t['content']}")
 
     try:
-        client = anthropic.Anthropic(api_key=api_key)
+        client = _get_client()
         response = client.messages.create(
             model="claude-haiku-4-5-20251001",
             max_tokens=256,
@@ -78,6 +75,9 @@ def _compress_turns(turns: list[dict], existing_summary: str) -> str:
         return _plain_fallback(turns, existing_summary)
     except anthropic.APIError:
         logger.exception("Unexpected Claude API error during context compression")
+        return _plain_fallback(turns, existing_summary)
+    except (EnvironmentError, Exception):
+        logger.exception("Unexpected error during context compression")
         return _plain_fallback(turns, existing_summary)
 
 
