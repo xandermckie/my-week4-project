@@ -38,6 +38,19 @@ def create_app() -> Flask:
     app.register_blueprint(quiz_bp)
     app.register_blueprint(profile_bp)
 
+    from app.storage import load_user
+
+    @app.context_processor
+    def inject_ui_prefs():
+        """Inject per-user UI preference flags into all templates."""
+        email = session.get("email")
+        if not email:
+            return {"pomodoro_intro_dismissed": False}
+        user = load_user(email)
+        if user is None:
+            return {"pomodoro_intro_dismissed": False}
+        return {"pomodoro_intro_dismissed": bool(user.get("pomodoro_intro_dismissed_at"))}
+
     @app.route("/")
     def index():
         """Show the marketing homepage."""

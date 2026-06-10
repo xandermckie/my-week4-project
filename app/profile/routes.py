@@ -4,10 +4,12 @@ import csv
 import hashlib
 import io
 import os
+from datetime import datetime, timezone
 
 from flask import (
     current_app,
     flash,
+    jsonify,
     redirect,
     render_template,
     request,
@@ -205,6 +207,19 @@ def export():
         as_attachment=True,
         download_name="lsat_tutor_data.csv",
     )
+
+
+@profile_bp.route("/pomodoro-intro/dismiss", methods=["POST"])
+@login_required
+@limiter.limit("10 per hour")
+def dismiss_pomodoro_intro():
+    """Record that the user dismissed the Pomodoro timer intro popup."""
+    email = session["email"]
+    user = load_user(email)
+    if not user.get("pomodoro_intro_dismissed_at"):
+        user["pomodoro_intro_dismissed_at"] = datetime.now(timezone.utc).isoformat()
+        save_user(email, user)
+    return jsonify({"ok": True})
 
 
 @profile_bp.route("/delete", methods=["POST"])

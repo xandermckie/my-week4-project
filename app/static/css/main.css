@@ -482,6 +482,33 @@ a:hover { color: var(--color-brown); }
 .pomodoro__btn--play { background: var(--color-brown); border-color: var(--color-brown); }
 .pomodoro__btn--play:hover { background: #9a7050; border-color: #9a7050; }
 
+.pomodoro-intro {
+  position: fixed; bottom: calc(1.5rem + 52px); right: 1.5rem;
+  z-index: 1001; max-width: 260px;
+  background: #fff; color: var(--color-text);
+  border-radius: 12px; padding: 1rem 1.1rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,.18);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-sans);
+}
+.pomodoro-intro__title {
+  font-size: .95rem; font-weight: 600; margin: 0 0 .4rem;
+  color: var(--color-brown);
+}
+.pomodoro-intro__body {
+  font-size: .85rem; line-height: 1.45; margin: 0 0 .85rem;
+  color: var(--color-text-muted);
+}
+.pomodoro-intro__btn {
+  display: block; width: 100%;
+  padding: .5rem 1rem; border: none; border-radius: var(--radius);
+  background: var(--color-brown); color: #fff;
+  font-family: var(--font-sans); font-size: .85rem; font-weight: 600;
+  cursor: pointer; transition: background .15s;
+  touch-action: manipulation;
+}
+.pomodoro-intro__btn:hover { background: #9a7050; }
+
 /* ===== Nav hamburger ===== */
 .nav__hamburger {
   display: none;

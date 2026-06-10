@@ -228,5 +228,53 @@
     ticker = setInterval(tick, 1000);
   }
 
+  // ── Intro popup (logged-in users, dismiss once per account) ───────────────
+
+  function shouldShowIntro() {
+    var cfg = window.__ratioUser;
+    return cfg && cfg.loggedIn && !cfg.pomodoroIntroDismissed;
+  }
+
+  function dismissIntro(introEl) {
+    if (introEl && introEl.parentNode) introEl.parentNode.removeChild(introEl);
+    if (window.__ratioUser) window.__ratioUser.pomodoroIntroDismissed = true;
+    fetch('/profile/pomodoro-intro/dismiss', {
+      method: 'POST',
+      credentials: 'same-origin',
+    }).catch(function () {});
+  }
+
+  function showIntro() {
+    if (!shouldShowIntro()) return;
+
+    var intro = el('div', {
+      class: 'pomodoro-intro',
+      id: 'pomIntro',
+      role: 'dialog',
+      'aria-labelledby': 'pomIntroTitle',
+    });
+    var title = el('h2', { class: 'pomodoro-intro__title', id: 'pomIntroTitle' }, 'Focus timer');
+    var body = el('p', { class: 'pomodoro-intro__body' },
+      'This is a Pomodoro timer — 25 minutes of focus, then a short break. ' +
+      'Use it while you study to stay on task and build a steady rhythm.'
+    );
+    var btnGotIt = el('button', { class: 'pomodoro-intro__btn', type: 'button' }, 'Got it');
+    intro.appendChild(title);
+    intro.appendChild(body);
+    intro.appendChild(btnGotIt);
+    document.body.appendChild(intro);
+
+    btnGotIt.addEventListener('click', function () { dismissIntro(intro); });
+    btnGotIt.focus();
+
+    setTimeout(function () {
+      if (intro.parentNode) btnGotIt.focus();
+    }, 0);
+  }
+
+  if (shouldShowIntro()) {
+    setTimeout(showIntro, 500);
+  }
+
   render();
 })();

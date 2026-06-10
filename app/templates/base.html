@@ -64,6 +64,12 @@
     </span>
   </footer>
 
+  <script>
+    window.__ratioUser = {
+      loggedIn: {{ 'true' if session.get('email') else 'false' }},
+      pomodoroIntroDismissed: {{ 'true' if pomodoro_intro_dismissed else 'false' }}
+    };
+  </script>
   <script src="{{ url_for('static', filename='js/pomodoro.js') }}"></script>
   <script>
     (function () {
