@@ -39,6 +39,13 @@ def register():
                 new_user = ensure_social_fields(new_user, email)
                 save_user(email, new_user)
                 session["email"] = email
+                # Best-effort welcome email — never blocks registration
+                try:
+                    from app.email_service import send_welcome
+                    display_name = new_user.get("username") or email.split("@")[0]
+                    send_welcome(email, display_name)
+                except Exception:
+                    pass
                 return redirect(url_for("chat.chat"))
 
     return render_template("auth/register.html", errors=errors)

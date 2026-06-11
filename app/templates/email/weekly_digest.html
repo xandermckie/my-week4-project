@@ -1,0 +1,69 @@
+{% extends "email/base_email.html" %}
+{% block subject %}Your Ratio weekly update — week of {{ week_of }}{% endblock %}
+
+{% block body %}
+<h1>Your week in review</h1>
+
+<p>Hi {{ display_name }}, here's how your LSAT prep went this week.</p>
+
+<!-- Stats row -->
+<table class="stat-row" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td class="stat-cell">
+      <span class="stat-cell__value">{{ questions_this_week }}</span>
+      <span class="stat-cell__label">Questions</span>
+    </td>
+    <td style="width:8px;"></td>
+    <td class="stat-cell">
+      <span class="stat-cell__value">{{ accuracy_pct }}%</span>
+      <span class="stat-cell__label">Accuracy</span>
+    </td>
+    <td style="width:8px;"></td>
+    <td class="stat-cell">
+      <span class="stat-cell__value">{{ xp_earned }}</span>
+      <span class="stat-cell__label">XP earned</span>
+    </td>
+  </tr>
+</table>
+
+{% if streak_count > 0 %}
+<div class="info-box">
+  🔥 <strong>{{ streak_count }}-day streak!</strong> Keep logging in and answering
+  at least one question daily to protect it.
+</div>
+{% endif %}
+
+<hr class="email-divider">
+
+{% if top_weak_area %}
+<h1 style="font-size:17px;">Your focus area this week: {{ top_weak_area }}</h1>
+<p>
+  You missed more <strong>{{ top_weak_area }}</strong> questions than any other type.
+  Here's a quick reminder of the strategy:
+</p>
+<div class="info-box">{{ weak_area_tip }}</div>
+{% endif %}
+
+{% if upcoming_exam_date %}
+<div class="warn-box">
+  <strong>Exam countdown:</strong> Your LSAT is on <strong>{{ upcoming_exam_date }}</strong>.
+  {% if days_until_exam is not none %}
+    That's <strong>{{ days_until_exam }} day{{ 's' if days_until_exam != 1 else '' }}</strong> away — stay consistent.
+  {% endif %}
+</div>
+{% endif %}
+
+<hr class="email-divider">
+
+<p><strong>Coming up next week:</strong></p>
+<ul class="feature-list">
+  <li>Log in every day to protect your streak and earn bonus XP</li>
+  <li>Complete your 3 daily missions for extra XP</li>
+  <li>Spend extra time on <strong>{{ top_weak_area or 'your weakest question type' }}</strong></li>
+  <li>Try a 24-hour challenge against a friend for motivation</li>
+</ul>
+
+<div style="text-align:center;">
+  <a class="btn-cta" href="{{ app_url }}/quiz">Practice Now</a>
+</div>
+{% endblock %}

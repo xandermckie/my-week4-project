@@ -1,0 +1,36 @@
+{% extends "email/base_email.html" %}
+{% block subject %}You're on Ratio Pro — welcome to the full experience{% endblock %}
+
+{% block body %}
+<h1>You're officially Pro, {{ display_name }}!</h1>
+
+<p>
+  Thank you for upgrading. Your Ratio Pro subscription is now active and every
+  feature is unlocked.
+</p>
+
+<ul class="feature-list">
+  <li><strong>200 AI tutor messages</strong> per day (up from 25)</li>
+  <li><strong>Unlimited practice questions</strong> — no daily cap</li>
+  <li><strong>Friends, challenges &amp; XP duels</strong> — compete with study partners</li>
+  <li><strong>Full leaderboard</strong> with friends-only ranking</li>
+  <li><strong>Priority support</strong> — we answer Pro users first</li>
+</ul>
+
+<div class="info-box">
+  <strong>Pro tip:</strong> Add a study partner as a friend and send them a 24-hour
+  XP Race challenge. Friendly competition is one of the fastest ways to improve.
+</div>
+
+<div style="text-align:center;">
+  <a class="btn-cta btn-cta--gold" href="{{ app_url }}/chat">Start a Tutor Session</a>
+</div>
+
+<hr class="email-divider">
+
+<p style="font-size:13px; color:#6a6560;">
+  Questions about your subscription? Email us at
+  <a href="mailto:contact.ratio.tutor@gmail.com" style="color:#7a5c3e;">contact.ratio.tutor@gmail.com</a>
+  and we'll get back to you within one business day.
+</p>
+{% endblock %}

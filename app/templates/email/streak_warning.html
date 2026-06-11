@@ -1,0 +1,28 @@
+{% extends "email/base_email.html" %}
+{% block subject %}Don't lose your {{ streak_count }}-day streak, {{ display_name }}!{% endblock %}
+
+{% block body %}
+<h1 style="font-size:20px;">Your streak is at risk 🔥</h1>
+
+<p>
+  Hi {{ display_name }}, you have a <strong>{{ streak_count }}-day study streak</strong>
+  but you haven't answered a question yet today. Streaks reset at midnight — you still
+  have time.
+</p>
+
+<div class="warn-box">
+  <strong>One question is all it takes.</strong> Log in now, answer a single practice
+  question, and your streak is safe for another day.
+</div>
+
+<div style="text-align:center;">
+  <a class="btn-cta" href="{{ app_url }}/quiz">Save My Streak</a>
+</div>
+
+<hr class="email-divider">
+
+<p style="font-size:13px; color:#6a6560;">
+  Consistency beats intensity. Students who practice every day — even for just five
+  minutes — improve their LSAT score faster than those who cram.
+</p>
+{% endblock %}

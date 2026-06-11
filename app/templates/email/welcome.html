@@ -1,0 +1,38 @@
+{% extends "email/base_email.html" %}
+{% block subject %}Welcome to Ratio — your LSAT tutor is ready{% endblock %}
+
+{% block body %}
+<h1>Welcome to Ratio, {{ display_name }}!</h1>
+
+<p>
+  You've just unlocked a smarter way to prepare for the LSAT. Ratio learns which
+  question types trip you up and builds everything — tutor sessions, quizzes, and
+  weekly study plans — around closing those gaps.
+</p>
+
+<div class="info-box">
+  <strong>Your account is active.</strong> Head to the app and answer your first
+  question to start earning XP and building your streak.
+</div>
+
+<p><strong>Here's what to do first:</strong></p>
+
+<ul class="feature-list">
+  <li>Take a <strong>practice quiz</strong> to set your baseline — the app will track which question types you miss</li>
+  <li>Open <strong>Tutor Chat</strong> and ask about any concept you find confusing</li>
+  <li>Go to <strong>Study Plan</strong>, enter your exam date, and get a personalized week-by-week schedule</li>
+  <li>Check your <strong>Analysis dashboard</strong> after a few questions to see your weak areas ranked</li>
+</ul>
+
+<div style="text-align:center;">
+  <a class="btn-cta" href="{{ app_url }}/chat">Open the Tutor Chat</a>
+</div>
+
+<hr class="email-divider">
+
+<p style="font-size:13px; color:#6a6560;">
+  Your study data is encrypted and never shared. If you have questions, reply to
+  this email or reach us at
+  <a href="mailto:contact.ratio.tutor@gmail.com" style="color:#7a5c3e;">contact.ratio.tutor@gmail.com</a>.
+</p>
+{% endblock %}

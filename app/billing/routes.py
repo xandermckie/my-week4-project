@@ -74,6 +74,13 @@ def upgrade():
             save_user(email, user)
             success = True
             current_tier = "pro"
+            # Best-effort upgrade confirmation email
+            try:
+                from app.email_service import send_upgrade_confirmation
+                display_name = user.get("username") or email.split("@")[0]
+                send_upgrade_confirmation(email, display_name)
+            except Exception:
+                pass
 
     return render_template(
         "billing/upgrade.html",
