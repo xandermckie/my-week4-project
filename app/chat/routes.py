@@ -1,7 +1,10 @@
 """Chat blueprint routes — the main tutoring interface."""
 
+import logging
 import re
 import threading
+
+logger = logging.getLogger(__name__)
 from datetime import date
 
 from flask import current_app, jsonify, redirect, render_template, request, session, url_for
@@ -107,8 +110,8 @@ def chat():
             user["last_reminder_date"] = today
             save_user(email, user)
             invalidate_user_cache(email)
-    except Exception:
-        pass
+    except Exception as exc:
+        logger.warning("Daily reminder setup failed for %s: %s", email, exc)
 
     return render_template("chat/chat.html", daily_focus=daily_focus, turns=turns)
 
@@ -118,8 +121,8 @@ def _send_reminder_bg(app, email: str, focus: str, exam_date: str | None) -> Non
     with app.app_context():
         try:
             send_daily_reminder(email, focus, exam_date)
-        except Exception:
-            pass
+        except Exception as exc:
+            logger.warning("Background reminder email failed for %s: %s", email, exc)
 
 
 @chat_bp.route("/chat", methods=["POST"])
@@ -192,8 +195,8 @@ def send_message():
         u = award_xp(u, 5)
         u, _ = advance_missions(u, "chat_today")
         save_user(email, u)
-    except Exception:
-        pass
+    except Exception as exc:
+        logger.warning("XP/mission update failed after chat for %s: %s", email, exc)
 
     return jsonify({"response": clean_response, "remaining": remaining})
 

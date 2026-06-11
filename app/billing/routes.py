@@ -1,6 +1,10 @@
 """Billing routes — upgrade page and mock payment processing."""
 
+import logging
+
 from flask import redirect, render_template, request, session, url_for
+
+logger = logging.getLogger(__name__)
 
 from app.billing import billing_bp
 from app.storage import load_user, save_user
@@ -85,8 +89,8 @@ def upgrade():
                 from app.email_service import send_upgrade_confirmation
                 display_name = user.get("username") or email.split("@")[0]
                 send_upgrade_confirmation(email, display_name)
-            except Exception:
-                pass
+            except Exception as exc:
+                logger.warning("Upgrade confirmation email failed for %s: %s", email, exc)
 
     return render_template(
         "billing/upgrade.html",

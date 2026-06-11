@@ -1,8 +1,11 @@
 """Auth routes — register, login, logout, terms."""
 
+import logging
 from datetime import datetime, timezone
 
 from flask import redirect, render_template, request, session, url_for
+
+logger = logging.getLogger(__name__)
 
 from app.auth import auth_bp
 from app.auth.forms import validate_login, validate_register
@@ -44,8 +47,8 @@ def register():
                     from app.email_service import send_welcome
                     display_name = new_user.get("username") or email.split("@")[0]
                     send_welcome(email, display_name)
-                except Exception:
-                    pass
+                except Exception as exc:
+                    logger.warning("Welcome email failed for %s: %s", email, exc)
                 return redirect(url_for("chat.chat"))
 
     return render_template("auth/register.html", errors=errors)

@@ -1,6 +1,9 @@
 """Study plan blueprint routes."""
 
+import logging
 from datetime import date
+
+logger = logging.getLogger(__name__)
 
 from flask import flash, make_response, redirect, render_template, request, session, url_for
 
@@ -95,8 +98,8 @@ def plan():
             user = get_or_refresh_missions(user, email)
             user, _ = advance_missions(user, "plan_today")
             save_user(email, user)
-        except Exception:
-            pass
+        except Exception as exc:
+            logger.warning("Mission/social update failed on study plan visit for %s: %s", email, exc)
 
     daily_focus = get_daily_focus(session_data)
     return render_template(
