@@ -1,12 +1,28 @@
 """Generate a personalized LSAT study plan using Claude."""
 
 import logging
+import os
 
 import anthropic
 
-from app.chat.claude_client import _get_client
-
 logger = logging.getLogger(__name__)
+
+# Dedicated timeout for plan generation: longer read window than the default
+# chat client (25 s) because Sonnet produces a full 8-week markdown plan.
+_PLAN_TIMEOUT = anthropic.Timeout(connect=5.0, read=120.0, write=10.0, pool=5.0)
+
+_plan_client: anthropic.Anthropic | None = None
+
+
+def _get_plan_client() -> anthropic.Anthropic:
+    """Return a shared Anthropic client configured for long-running plan requests."""
+    global _plan_client
+    if _plan_client is None:
+        api_key = os.environ.get("ANTHROPIC_API_KEY")
+        if not api_key:
+            raise EnvironmentError("ANTHROPIC_API_KEY environment variable is not set.")
+        _plan_client = anthropic.Anthropic(api_key=api_key, timeout=_PLAN_TIMEOUT)
+    return _plan_client
 
 
 def generate_study_plan(weak_areas: list[tuple[str, int]], target_date: str | None) -> str:
@@ -30,17 +46,22 @@ def generate_study_plan(weak_areas: list[tuple[str, int]], target_date: str | No
         f"Create a focused LSAT study plan for a student with these details:\n\n"
         f"{date_text}\n\nWeak areas:\n{area_text}\n\n"
         "Produce a week-by-week plan (up to 8 weeks) with specific daily focus areas, "
-        "practice targets, and review checkpoints. Format as markdown with week headers."
+        "practice targets, and review checkpoints. For each week include: a theme, "
+        "Monday–Sunday daily tasks (30–90 min each), a mid-week check-in goal, and a "
+        "weekend review exercise. Format as markdown with week headers."
     )
 
     try:
-        client = _get_client()
+        client = _get_plan_client()
         response = client.messages.create(
-            model="claude-haiku-4-5-20251001",
-            max_tokens=1500,
+            model="claude-sonnet-4-6",
+            max_tokens=2500,
             messages=[{"role": "user", "content": prompt}],
         )
         return response.content[0].text
+    except anthropic.APITimeoutError:
+        logger.exception("Claude API timeout in generate_study_plan")
+        return "Plan generation timed out. Please try again — it sometimes takes a moment for longer plans."
     except anthropic.APIConnectionError:
         logger.exception("Claude API connection error in generate_study_plan")
         return "Could not reach the tutoring service. Please check your connection and try again."
