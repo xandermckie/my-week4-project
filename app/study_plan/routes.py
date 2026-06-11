@@ -60,25 +60,28 @@ def plan():
         fix_used = False
         stored_exam_date = None
 
+    is_pro = user.get("tier") == "pro"
+
     if request.method == "POST":
         target_date = request.form.get("target_date") or user.get("target_exam_date")
         is_fix = request.form.get("is_fix") == "1"
 
-        if stored_plan and fix_used:
-            flash("You have already used your one plan correction. Your plan is locked until your exam date passes.")
-            return redirect(url_for("study_plan.plan"))
+        # Pro users can regenerate or edit their plan at any time.
+        if not is_pro:
+            if stored_plan and fix_used:
+                flash("You have already used your one plan correction. Your plan is locked until your exam date passes. Upgrade to Pro for unlimited edits.")
+                return redirect(url_for("study_plan.plan"))
 
-        if stored_plan and not fix_used and not is_fix:
-            flash("You have already generated a plan. Use the date correction option if needed.")
-            return redirect(url_for("study_plan.plan"))
+            if stored_plan and not fix_used and not is_fix:
+                flash("You have already generated a plan. Use the date correction option below, or upgrade to Pro for unlimited regenerations.")
+                return redirect(url_for("study_plan.plan"))
 
         generated = generate_study_plan(weak_areas, target_date)
         user["study_plan_content"] = generated
         user["study_plan_exam_date"] = target_date
-        if is_fix:
-            user["study_plan_fix_used"] = True
-        else:
-            user["study_plan_fix_used"] = False
+        if not is_pro:
+            user["study_plan_fix_used"] = bool(is_fix)
+        # Pro users: never consume the fix slot
         save_user(email, user)
 
         send_plan_email(email, generated, target_date)
@@ -104,6 +107,7 @@ def plan():
         fix_used=fix_used,
         has_plan=bool(stored_plan),
         daily_focus=daily_focus,
+        is_pro=is_pro,
     )
 
 

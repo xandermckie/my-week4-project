@@ -80,7 +80,27 @@
       {% endif %}
     </div>
 
-    {% if not fix_used %}
+    {% if is_pro %}
+      {# Pro: unlimited regeneration and editing #}
+      <div class="plan-fix plan-fix--pro">
+        <p class="plan-fix__label">
+          <span class="badge badge--pro" style="vertical-align:middle;margin-right:.4rem;">PRO</span>
+          Regenerate or update your plan at any time.
+        </p>
+        <form method="POST" action="{{ url_for('study_plan.plan') }}" class="plan-form">
+          <input type="hidden" name="is_fix" value="1">
+          <label class="form-label" for="target_date_fix">Exam Date</label>
+          <input
+            class="form-input form-input--inline"
+            type="date"
+            id="target_date_fix"
+            name="target_date"
+            value="{{ target_date or '' }}"
+          >
+          <button class="btn btn--primary" type="submit">Regenerate Plan</button>
+        </form>
+      </div>
+    {% elif not fix_used %}
       <div class="plan-fix">
         <p class="plan-fix__label">Need to correct your exam date? You have <strong>1 correction remaining</strong>.</p>
         <form method="POST" action="{{ url_for('study_plan.plan') }}" class="plan-form">
@@ -97,7 +117,10 @@
         </form>
       </div>
     {% else %}
-      <p class="plan-fix__locked">Your plan is locked. You have used your one date correction.</p>
+      <p class="plan-fix__locked">
+        Your plan is locked — you've used your one date correction.
+        <a href="{{ url_for('billing.upgrade') }}">Upgrade to Pro</a> for unlimited edits.
+      </p>
     {% endif %}
   {% endif %}
 </div>

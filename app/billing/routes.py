@@ -10,18 +10,24 @@ TIER_LIMITS = {
     "free": {
         "chat_daily": 25,
         "quiz_daily": 50,
-        "friends": False,
-        "challenges": False,
+        "friends": True,
+        "challenges": True,
         "leaderboard": True,
         "study_plan": True,
+        "study_plan_edits": False,   # Free: 1 generation + 1 date correction
+        "unlimited_quiz": False,
+        "unlimited_chat": False,
     },
     "pro": {
-        "chat_daily": 200,
+        "chat_daily": 9999,
         "quiz_daily": 9999,
         "friends": True,
         "challenges": True,
         "leaderboard": True,
         "study_plan": True,
+        "study_plan_edits": True,    # Pro: unlimited regenerations + edits
+        "unlimited_quiz": True,
+        "unlimited_chat": True,
     },
 }
 
