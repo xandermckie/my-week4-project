@@ -98,6 +98,7 @@
     <div class="glass-card upgrade-confirm">
       <p class="upgrade-confirm__msg">You are subscribed to <strong>Ratio Pro</strong>. Thank you for your support!</p>
       <form method="POST" action="{{ url_for('billing.downgrade') }}" onsubmit="return confirm('Are you sure you want to downgrade to the Free plan?');">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <button class="btn btn--ghost btn--sm" type="submit">Downgrade to Free</button>
       </form>
     </div>
@@ -123,6 +124,7 @@
       {% endif %}
 
       <form method="POST" class="payment-form" autocomplete="off">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <div class="form-group">
           <label class="form-label" for="card_name">Name on card</label>
           <input class="form-input" id="card_name" name="card_name" type="text" placeholder="Jane Smith" required>

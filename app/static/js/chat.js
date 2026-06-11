@@ -6,6 +6,7 @@
   const thread = document.getElementById("chatThread");
   const sendBtn = document.getElementById("sendBtn");
   const quotaLabel = document.getElementById("quotaLabel");
+  const csrfToken = (document.querySelector('meta[name="csrf-token"]') || {}).content || "";
 
   function updateQuota(remaining) {
     if (!quotaLabel) return;
@@ -59,7 +60,7 @@
 
     fetch("/chat", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "X-CSRFToken": csrfToken },
       body: JSON.stringify({ message: message }),
     })
       .then(function (res) {

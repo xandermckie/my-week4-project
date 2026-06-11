@@ -35,6 +35,7 @@
         <a class="btn btn--primary" href="{{ url_for('quiz.quiz') }}" style="margin-left:.5rem;">Next Question</a>
       {% else %}
         <form method="POST" action="{{ url_for('quiz.submit_answer') }}" class="quiz-form">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
           {% for letter, text in question.choices.items() %}
             <label class="quiz-choice">
               <input type="radio" name="answer" value="{{ letter }}" required>

@@ -7,9 +7,11 @@ from cryptography.fernet import Fernet
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_mail import Mail
+from flask_wtf.csrf import CSRFProtect
 
 limiter = Limiter(key_func=get_remote_address)
 mail = Mail()
+csrf = CSRFProtect()
 
 
 def get_cache(cache_dir: str) -> diskcache.Cache:

@@ -60,6 +60,7 @@
     <p class="profile-section__title">Profile Picture</p>
     <img class="avatar-circle" src="{{ url_for('profile.avatar') }}" alt="Your avatar">
     <form method="POST" action="{{ url_for('profile.upload_avatar') }}" enctype="multipart/form-data" style="margin-top:.75rem; display:flex; gap:.5rem; align-items:center; flex-wrap:wrap;">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <input type="file" name="avatar" accept=".png,.jpg,.jpeg" required>
       <button class="btn btn--ghost" type="submit">Upload</button>
     </form>
@@ -70,6 +71,7 @@
   <div class="profile-section">
     <p class="profile-section__title">Display Name</p>
     <form method="POST" action="{{ url_for('profile.profile') }}" style="display:flex; gap:.5rem; flex-wrap:wrap;">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <input class="form-input form-input--inline" type="text" name="username" value="{{ username }}" placeholder="Enter a display name" maxlength="50">
       <button class="btn btn--primary" type="submit">Save</button>
     </form>
@@ -80,6 +82,7 @@
   <div class="profile-section">
     <p class="profile-section__title">Change Password</p>
     <form method="POST" action="{{ url_for('profile.change_password') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <label class="form-label" for="old_password">Current Password</label>
       <input class="form-input" type="password" id="old_password" name="old_password" required autocomplete="current-password">
 
@@ -116,6 +119,7 @@
       <summary style="cursor:pointer; font-size:.9rem;">Permanently delete my account and all data</summary>
       <p style="margin:.75rem 0 .5rem; font-size:.875rem;">This cannot be undone. All chat history, weak areas, your study plan, and your avatar will be deleted.</p>
       <form method="POST" action="{{ url_for('profile.delete_account') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <label class="form-label" for="confirm_text">Type <strong>DELETE</strong> to confirm</label>
         <input class="form-input form-input--inline" type="text" id="confirm_text" name="confirm_text" placeholder="DELETE" required>
         <button class="btn btn--danger" type="submit" style="margin-left:.5rem;">Delete My Account</button>

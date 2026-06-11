@@ -8,6 +8,7 @@ Flask-Mail==0.10.0
 gunicorn>=23.0.0
 icalendar==5.0.12
 python-dateutil>=2.9.0
+Flask-WTF>=1.2.0
 WTForms==3.1.2
 python-dotenv==1.0.1
 pytest==8.2.2

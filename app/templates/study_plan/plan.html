@@ -20,6 +20,7 @@
   {% if not has_plan %}
     {# No plan yet — show the generate form #}
     <form method="POST" action="{{ url_for('study_plan.plan') }}" class="plan-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <input type="hidden" name="is_fix" value="0">
       <label class="form-label" for="target_date">Exam Date (optional)</label>
       <input
@@ -42,6 +43,7 @@
     <div class="plan-export">
       <p class="plan-export__heading">Export to Calendar</p>
       <form method="POST" action="{{ url_for('study_plan.export_ics') }}" class="export-form" id="exportForm">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <div class="export-days">
           <span class="export-days__label">Study days</span>
           {% for abbr, label in [('mon','Mon'),('tue','Tue'),('wed','Wed'),('thu','Thu'),('fri','Fri'),('sat','Sat'),('sun','Sun')] %}
@@ -73,6 +75,7 @@
     <div class="plan-actions">
       {% if mail_enabled %}
         <form method="POST" action="{{ url_for('study_plan.send_reminder') }}" style="display:inline;">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
           <button class="btn btn--ghost" type="submit">Email me this plan</button>
         </form>
       {% else %}
@@ -88,6 +91,7 @@
           Regenerate or update your plan at any time.
         </p>
         <form method="POST" action="{{ url_for('study_plan.plan') }}" class="plan-form">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
           <input type="hidden" name="is_fix" value="1">
           <label class="form-label" for="target_date_fix">Exam Date</label>
           <input
@@ -104,6 +108,7 @@
       <div class="plan-fix">
         <p class="plan-fix__label">Need to correct your exam date? You have <strong>1 correction remaining</strong>.</p>
         <form method="POST" action="{{ url_for('study_plan.plan') }}" class="plan-form">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
           <input type="hidden" name="is_fix" value="1">
           <label class="form-label" for="target_date_fix">New Exam Date</label>
           <input

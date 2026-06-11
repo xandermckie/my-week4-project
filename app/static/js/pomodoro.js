@@ -238,9 +238,11 @@
   function dismissIntro(introEl) {
     if (introEl && introEl.parentNode) introEl.parentNode.removeChild(introEl);
     if (window.__ratioUser) window.__ratioUser.pomodoroIntroDismissed = true;
+    var _csrf = (document.querySelector('meta[name="csrf-token"]') || {}).content || "";
     fetch('/profile/pomodoro-intro/dismiss', {
       method: 'POST',
       credentials: 'same-origin',
+      headers: { 'X-CSRFToken': _csrf },
     }).catch(function () {});
   }
 

@@ -20,6 +20,7 @@
   {% endfor %}
 
   <form method="POST" action="{{ url_for('auth.login') }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <label class="form-label" for="email">Email</label>
     <input class="form-input" type="email" id="email" name="email" required autocomplete="email">
 

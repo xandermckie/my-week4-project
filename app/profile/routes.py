@@ -4,6 +4,7 @@ import csv
 import hashlib
 import io
 import os
+import re
 from datetime import datetime, timezone
 
 from flask import (
@@ -60,6 +61,7 @@ def _avatar_path(email: str, avatars_dir: str) -> str:
 
 @profile_bp.route("/", methods=["GET", "POST"])
 @login_required
+@limiter.limit("20 per hour", methods=["POST"])
 def profile():
     """Render the profile page and handle username changes on POST."""
     email = session["email"]
@@ -69,7 +71,8 @@ def profile():
 
     if request.method == "POST":
         raw = request.form.get("username", "").strip()
-        username = raw[:50].replace("<", "").replace(">", "").replace("&", "")
+        # Whitelist: letters, digits, spaces, hyphens, underscores only
+        username = re.sub(r"[^\w\s\-]", "", raw, flags=re.UNICODE)[:50].strip()
         if username:
             user["username"] = username
             save_user(email, user)

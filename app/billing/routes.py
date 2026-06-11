@@ -6,6 +6,7 @@ from flask import redirect, render_template, request, session, url_for
 
 logger = logging.getLogger(__name__)
 
+from app.auth.helpers import login_required
 from app.billing import billing_bp
 from app.storage import load_user, save_user
 
@@ -102,12 +103,10 @@ def upgrade():
 
 
 @billing_bp.route("/downgrade", methods=["POST"])
+@login_required
 def downgrade():
     """Downgrade a Pro account to the Free tier."""
-    email = session.get("email")
-    if not email:
-        return redirect(url_for("auth.login"))
-
+    email = session["email"]
     user = load_user(email)
     if user is not None:
         user["tier"] = "free"

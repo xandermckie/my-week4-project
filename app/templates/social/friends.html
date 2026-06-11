@@ -12,6 +12,7 @@
       Add a Friend
     </p>
     <form method="POST" action="{{ url_for('social.add_friend') }}" style="display:flex;gap:.5rem;flex-wrap:wrap;">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <input class="form-input form-input--inline" type="text" name="query" placeholder="Username or email" required style="min-width:220px;">
       <button class="btn btn--primary" type="submit" style="margin-top:0;">Send Request</button>
     </form>
@@ -28,10 +29,12 @@
     <div class="friend-row">
       <span class="friend-row__name">{{ p.username }}</span>
       <form method="POST" action="{{ url_for('social.accept_friend') }}" style="display:inline;">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input type="hidden" name="user_id" value="{{ p.user_id }}">
         <button class="btn btn--primary" type="submit" style="padding:.35rem .9rem;font-size:.85rem;margin-top:0;">Accept</button>
       </form>
       <form method="POST" action="{{ url_for('social.decline_friend') }}" style="display:inline;margin-left:.4rem;">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input type="hidden" name="user_id" value="{{ p.user_id }}">
         <button class="btn btn--ghost" type="submit" style="padding:.35rem .9rem;font-size:.85rem;margin-top:0;">Decline</button>
       </form>
@@ -98,6 +101,7 @@
           <div class="challenge-menu">
             {% for ctype, clabel in [('xp_race','XP Race'),('question_blitz','Question Blitz'),('accuracy','Accuracy Duel')] %}
             <form method="POST" action="{{ url_for('social.send_challenge') }}">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
               <input type="hidden" name="user_id" value="{{ f.user_id }}">
               <input type="hidden" name="type" value="{{ ctype }}">
               <button class="challenge-menu__item" type="submit">{{ clabel }}</button>
@@ -106,6 +110,7 @@
           </div>
         </details>
         <form method="POST" action="{{ url_for('social.remove_friend') }}" style="display:inline;">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
           <input type="hidden" name="user_id" value="{{ f.user_id }}">
           <button class="btn btn--ghost" type="submit" style="padding:.35rem .7rem;font-size:.82rem;margin-top:0;" title="Remove friend">
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>

@@ -5,7 +5,7 @@ import os
 
 from flask import Flask, flash, jsonify, redirect, render_template, request, session, url_for
 from app.config import get_config
-from app.extensions import get_cache, limiter, mail
+from app.extensions import csrf, get_cache, limiter, mail
 
 logger = logging.getLogger(__name__)
 
@@ -25,6 +25,7 @@ def create_app() -> Flask:
 
     limiter.init_app(app)
     mail.init_app(app)
+    csrf.init_app(app)
 
     from app.auth import auth_bp
     from app.chat import chat_bp
@@ -126,7 +127,7 @@ def create_app() -> Flask:
         if request.path in ("/chat", "/history") or request.accept_mimetypes.best == "application/json":
             return jsonify({"error": message}), 429
         flash(message, "error")
-        return redirect(request.referrer or url_for("index"))
+        return redirect(url_for("index"))
 
     @app.errorhandler(500)
     def internal_error(e):
@@ -136,7 +137,7 @@ def create_app() -> Flask:
         if request.path in ("/chat", "/history") or request.accept_mimetypes.best == "application/json":
             return jsonify({"error": message}), 500
         flash(message, "error")
-        return redirect(request.referrer or url_for("index")), 500
+        return redirect(url_for("index")), 500
 
     return app
 
