@@ -33,6 +33,7 @@ def create_app() -> Flask:
     from app.quiz import quiz_bp
     from app.profile import profile_bp
     from app.social import social_bp
+    from app.billing import billing_bp
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(chat_bp)
@@ -41,6 +42,7 @@ def create_app() -> Flask:
     app.register_blueprint(quiz_bp)
     app.register_blueprint(profile_bp)
     app.register_blueprint(social_bp)
+    app.register_blueprint(billing_bp)
 
     from app.storage import StorageCorruptError, load_user_cached
 
@@ -61,6 +63,7 @@ def create_app() -> Flask:
             "streak_count": 0,
             "xp_info": {"level": 1, "league": "Bronze", "progress": 0, "needed": 100, "pct": 0},
             "missions": [],
+            "current_tier": "free",
         }
 
         if not email:
@@ -87,6 +90,7 @@ def create_app() -> Flask:
             "streak_count": user.get("streak_count", 0),
             "xp_info": level_progress(user.get("xp", 0)),
             "missions": missions_list,
+            "current_tier": user.get("tier", "free"),
         }
 
     @app.route("/")

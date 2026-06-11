@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% block title %}Upgrade to Pro | Ratio{% endblock %}
+
+{% block content %}
+<div class="page upgrade-page">
+
+  <!-- Hero -->
+  <div class="upgrade-hero glass-card">
+    <div class="upgrade-hero__icon" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    </div>
+    <h1 class="page__title" style="margin:0">Ratio Pro</h1>
+    <p class="upgrade-hero__tagline">Everything you need to ace the LSAT.</p>
+    <div class="upgrade-hero__price">
+      <span class="upgrade-hero__amount">$29</span>
+      <span class="upgrade-hero__period">/ month</span>
+    </div>
+    {% if current_tier == "pro" %}
+      <span class="badge badge--pro">You're on Pro</span>
+    {% endif %}
+  </div>
+
+  <!-- Comparison grid -->
+  <div class="tier-grid">
+    <div class="tier-card glass-card {% if current_tier == 'free' %}tier-card--active{% endif %}">
+      <h2 class="tier-card__name">Free</h2>
+      <ul class="tier-card__features">
+        <li>
+          <svg class="feature-icon feature-icon--yes" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          25 AI tutor messages / day
+        </li>
+        <li>
+          <svg class="feature-icon feature-icon--yes" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          50 practice questions / day
+        </li>
+        <li>
+          <svg class="feature-icon feature-icon--yes" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Study plan generator
+        </li>
+        <li>
+          <svg class="feature-icon feature-icon--yes" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Global leaderboard (view only)
+        </li>
+        <li>
+          <svg class="feature-icon feature-icon--no" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Friends &amp; challenges
+        </li>
+        <li>
+          <svg class="feature-icon feature-icon--no" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Unlimited quiz &amp; chat
+        </li>
+      </ul>
+    </div>
+
+    <div class="tier-card tier-card--pro glass-card {% if current_tier == 'pro' %}tier-card--active{% endif %}">
+      <div class="tier-card__badge">Most Popular</div>
+      <h2 class="tier-card__name">Pro</h2>
+      <ul class="tier-card__features">
+        <li>
+          <svg class="feature-icon feature-icon--yes" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          200 AI tutor messages / day
+        </li>
+        <li>
+          <svg class="feature-icon feature-icon--yes" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Unlimited practice questions
+        </li>
+        <li>
+          <svg class="feature-icon feature-icon--yes" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Study plan generator
+        </li>
+        <li>
+          <svg class="feature-icon feature-icon--yes" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Global leaderboard + friends ranking
+        </li>
+        <li>
+          <svg class="feature-icon feature-icon--yes" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Friends, challenges &amp; XP duels
+        </li>
+        <li>
+          <svg class="feature-icon feature-icon--yes" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Priority support
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Payment form / confirmation -->
+  {% if current_tier == "pro" %}
+    <div class="glass-card upgrade-confirm">
+      <p class="upgrade-confirm__msg">You are subscribed to <strong>Ratio Pro</strong>. Thank you for your support!</p>
+      <form method="POST" action="{{ url_for('billing.downgrade') }}" onsubmit="return confirm('Are you sure you want to downgrade to the Free plan?');">
+        <button class="btn btn--ghost btn--sm" type="submit">Downgrade to Free</button>
+      </form>
+    </div>
+  {% elif success %}
+    <div class="glass-card upgrade-confirm">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1a6b3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <p class="upgrade-confirm__msg">Payment accepted! You are now on <strong>Ratio Pro</strong>.</p>
+      <a class="btn btn--primary" href="{{ url_for('chat.chat') }}">Start studying</a>
+    </div>
+  {% else %}
+    <div class="glass-card payment-card">
+      <h2 class="payment-card__title">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        Payment details
+      </h2>
+      <p class="payment-card__demo-note">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        This is a demo environment — no real charges are made. Use any 16-digit number.
+      </p>
+
+      {% if error %}
+        <div class="alert alert--error">{{ error }}</div>
+      {% endif %}
+
+      <form method="POST" class="payment-form" autocomplete="off">
+        <div class="form-group">
+          <label class="form-label" for="card_name">Name on card</label>
+          <input class="form-input" id="card_name" name="card_name" type="text" placeholder="Jane Smith" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="card_number">Card number</label>
+          <div class="card-input-wrap">
+            <svg class="card-input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            <input class="form-input card-input" id="card_number" name="card_number" type="text" placeholder="1234 5678 9012 3456" maxlength="19" inputmode="numeric" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="expiry">Expiry (MM/YY)</label>
+            <input class="form-input" id="expiry" name="expiry" type="text" placeholder="12/27" maxlength="5" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cvv">CVV</label>
+            <input class="form-input" id="cvv" name="cvv" type="text" placeholder="123" maxlength="4" inputmode="numeric" required>
+          </div>
+        </div>
+        <button class="btn btn--primary btn--full" type="submit">
+          Subscribe for $29/month
+        </button>
+      </form>
+    </div>
+  {% endif %}
+
+</div>
+
+<script>
+  // Auto-format card number with spaces
+  const cardInput = document.getElementById('card_number');
+  if (cardInput) {
+    cardInput.addEventListener('input', function () {
+      let val = this.value.replace(/\D/g, '').substring(0, 16);
+      this.value = val.replace(/(.{4})/g, '$1 ').trim();
+    });
+  }
+  const expiryInput = document.getElementById('expiry');
+  if (expiryInput) {
+    expiryInput.addEventListener('input', function () {
+      let val = this.value.replace(/\D/g, '').substring(0, 4);
+      if (val.length >= 3) val = val.substring(0, 2) + '/' + val.substring(2);
+      this.value = val;
+    });
+  }
+</script>
+{% endblock %}

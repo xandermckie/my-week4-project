@@ -804,3 +804,196 @@ a:hover { color: var(--color-brown); }
   .challenge-grid { grid-template-columns: 1fr; }
   .friend-card { flex-direction: column; align-items: flex-start; }
 }
+
+/* ===== Glassmorphism ===== */
+/*
+ * Applied to high-signal cards: quiz, profile, missions, billing.
+ * Background gradient + backdrop-filter creates the frosted glass effect.
+ * Falls back gracefully to a white surface when backdrop-filter is unsupported.
+ */
+body {
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(122, 92, 62, .13) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(28, 28, 26, .07) 0%, transparent 55%),
+    var(--color-bg);
+  background-attachment: fixed;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, .62);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, .7);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 24px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,.04);
+}
+
+/* Apply glass to the main content cards */
+.quiz-card,
+.stat-card,
+.mission-card,
+.chat-box,
+.plan-card,
+.profile-card,
+.analysis-card,
+.leaderboard-card {
+  background: rgba(255, 255, 255, .62);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, .7);
+  box-shadow: 0 4px 24px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,.04);
+}
+
+/* Subtle inner highlight on top edge */
+.glass-card::before,
+.quiz-card::before,
+.stat-card::before {
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(160deg, rgba(255,255,255,.35) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.quiz-card,
+.stat-card,
+.glass-card { position: relative; overflow: hidden; }
+
+/* ===== Nav extras — Pro badge / Upgrade link ===== */
+.nav__pro-badge {
+  display: inline-flex; align-items: center;
+  padding: .2rem .55rem;
+  background: linear-gradient(135deg, #c9a227, #e8c84a);
+  color: #1c1c1a;
+  font-size: .7rem; font-weight: 700; letter-spacing: .05em;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.nav__upgrade-link {
+  display: inline-flex; align-items: center;
+  padding: .2rem .65rem;
+  background: rgba(122, 92, 62, .18);
+  color: #e8c84a !important;
+  font-size: .78rem; font-weight: 600;
+  border-radius: 4px;
+  border: 1px solid rgba(232, 200, 74, .35);
+  transition: background .15s, border-color .15s;
+}
+.nav__upgrade-link:hover {
+  background: rgba(232, 200, 74, .22);
+  border-color: rgba(232, 200, 74, .65);
+  text-decoration: none !important;
+}
+
+/* ===== Upgrade / Billing page ===== */
+.upgrade-page { max-width: 900px; }
+
+.upgrade-hero {
+  text-align: center;
+  padding: 2.5rem 2rem 2rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, rgba(28,28,26,.88) 0%, rgba(60,50,30,.82) 100%);
+  color: #fff;
+}
+.upgrade-hero__icon { color: #e8c84a; margin-bottom: .75rem; }
+.upgrade-hero__tagline { color: rgba(255,255,255,.7); margin: .35rem 0 1rem; font-size: 1.05rem; }
+.upgrade-hero__price { display: flex; align-items: baseline; justify-content: center; gap: .25rem; margin-bottom: 1rem; }
+.upgrade-hero__amount { font-size: 3rem; font-weight: 700; font-family: var(--font-serif); color: #e8c84a; }
+.upgrade-hero__period { font-size: 1.1rem; color: rgba(255,255,255,.6); }
+
+.tier-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+@media (max-width: 620px) { .tier-grid { grid-template-columns: 1fr; } }
+
+.tier-card {
+  padding: 1.75rem 1.5rem;
+  position: relative;
+}
+.tier-card--active {
+  border-color: var(--color-brown);
+  box-shadow: 0 0 0 2px var(--color-brown), 0 4px 24px rgba(0,0,0,.1);
+}
+.tier-card--pro {
+  background: rgba(255, 255, 255, .72);
+}
+.tier-card__badge {
+  position: absolute; top: -10px; right: 1rem;
+  background: linear-gradient(135deg, #c9a227, #e8c84a);
+  color: #1c1c1a;
+  font-size: .72rem; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: .2rem .7rem;
+  border-radius: 4px;
+}
+.tier-card__name {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+.tier-card__features {
+  list-style: none;
+  display: flex; flex-direction: column; gap: .6rem;
+}
+.tier-card__features li {
+  display: flex; align-items: center; gap: .5rem;
+  font-size: .9rem;
+}
+.feature-icon--yes { color: var(--color-success); flex-shrink: 0; }
+.feature-icon--no { color: var(--color-text-muted); flex-shrink: 0; }
+
+/* Payment card */
+.payment-card {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+.payment-card__title {
+  display: flex; align-items: center; gap: .5rem;
+  font-family: var(--font-serif); font-size: 1.2rem;
+  margin-bottom: 1.25rem;
+}
+.payment-card__demo-note {
+  display: flex; align-items: flex-start; gap: .4rem;
+  font-size: .82rem; color: var(--color-text-muted);
+  background: var(--color-surface-alt);
+  border-radius: var(--radius); padding: .6rem .8rem;
+  margin-bottom: 1.25rem;
+  border-left: 3px solid var(--color-brown);
+}
+
+.payment-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.card-input-wrap { position: relative; }
+.card-input-icon {
+  position: absolute; left: .75rem; top: 50%; transform: translateY(-50%);
+  color: var(--color-text-muted); pointer-events: none;
+}
+.card-input { padding-left: 2.25rem; }
+.btn--full { width: 100%; justify-content: center; }
+.btn--ghost {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+.btn--ghost:hover { border-color: var(--color-danger); color: var(--color-danger); }
+.btn--sm { font-size: .85rem; padding: .35rem .9rem; }
+
+.upgrade-confirm {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 1rem;
+}
+.upgrade-confirm__msg { font-size: 1rem; }
+
+/* Badge — reusable */
+.badge { display: inline-block; padding: .25rem .7rem; border-radius: 4px; font-size: .78rem; font-weight: 600; }
+.badge--pro { background: linear-gradient(135deg, #c9a227, #e8c84a); color: #1c1c1a; }

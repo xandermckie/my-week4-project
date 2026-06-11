@@ -1,0 +1,914 @@
+[
+  {
+    "type": "Weaken",
+    "stimulus": "Studies show that students who attend tutoring sessions score higher on standardized tests. Therefore, tutoring causes higher test scores.",
+    "question": "Which of the following, if true, most weakens the argument above?",
+    "choices": {"A": "Students who attend tutoring also tend to study more independently.", "B": "Tutoring sessions are expensive and not available to all students.", "C": "Some students who do not attend tutoring also score very high.", "D": "The studies were conducted across multiple countries."},
+    "correct": "A",
+    "explanation": "Choice A weakens the argument by introducing an alternative cause — the increased independent study, not the tutoring, could be driving the score gains."
+  },
+  {
+    "type": "Assumption",
+    "stimulus": "The law school requires applicants to score in the 90th percentile on the LSAT. Maria scored in the 92nd percentile. Therefore, Maria will be admitted.",
+    "question": "The argument above assumes which of the following?",
+    "choices": {"A": "Maria applied to only one law school.", "B": "The LSAT score is the only admission criterion.", "C": "Scoring above the 90th percentile guarantees admission.", "D": "Maria prepared extensively for the LSAT."},
+    "correct": "B",
+    "explanation": "The argument jumps from meeting one criterion to being admitted. This only works if the LSAT score is the sole criterion — choice B."
+  },
+  {
+    "type": "Strengthen",
+    "stimulus": "A city health department claims that installing more streetlights in a neighborhood reduces nighttime crime. They point to a 20% drop in reported crimes after new lights were installed last year.",
+    "question": "Which of the following, if true, most strengthens the argument?",
+    "choices": {"A": "The police department also increased patrols in the same neighborhood last year.", "B": "Crime rates in comparable neighborhoods without new lights remained unchanged.", "C": "Some residents complained that the new lights were too bright.", "D": "The streetlights were installed in October, which has shorter days."},
+    "correct": "B",
+    "explanation": "Choice B strengthens the causal claim by providing a control group — nearby neighborhoods without lights saw no drop, making it more likely the lights caused the reduction."
+  },
+  {
+    "type": "Flaw",
+    "stimulus": "Everyone who has ever won a marathon trained for at least six months beforehand. Carlos trained for seven months. Therefore, Carlos will win the next marathon.",
+    "question": "The reasoning above is flawed because it",
+    "choices": {"A": "relies on an unrepresentative sample of marathon winners.", "B": "treats a necessary condition as if it were a sufficient condition.", "C": "fails to consider that Carlos may not run in the marathon.", "D": "assumes that training duration is the only factor in winning."},
+    "correct": "B",
+    "explanation": "Training for six months is necessary to win, but the argument treats it as sufficient. Many people who train still do not win — choice B identifies this classic necessary/sufficient flaw."
+  },
+  {
+    "type": "Inference",
+    "stimulus": "All first-year associates at the firm must attend the orientation seminar. No one who attended the orientation seminar failed the bar exam. Jordan is a first-year associate at the firm.",
+    "question": "Which of the following can be properly concluded from the statements above?",
+    "choices": {"A": "Jordan will become a partner at the firm.", "B": "Jordan attended the orientation seminar.", "C": "Jordan did not fail the bar exam.", "D": "All first-year associates pass the bar exam."},
+    "correct": "C",
+    "explanation": "Jordan must attend the seminar (premise 1). No seminar attendee failed the bar (premise 2). Therefore Jordan did not fail the bar — choice C follows necessarily."
+  },
+  {
+    "type": "Main Point",
+    "stimulus": "Critics argue that social media increases loneliness. However, research shows that users who engage actively — posting and commenting rather than passively scrolling — report stronger social connections. Passive consumption, not social media itself, is the problem.",
+    "question": "Which of the following best expresses the conclusion of the argument?",
+    "choices": {"A": "Social media should be redesigned to discourage passive scrolling.", "B": "Active social media use is associated with stronger social connections than passive use.", "C": "Social media does not cause loneliness; passive use of it does.", "D": "Critics of social media have misunderstood the relevant research."},
+    "correct": "C",
+    "explanation": "The argument concedes that passive use is harmful but argues social media itself is not the cause. Choice C precisely captures the main conclusion."
+  },
+  {
+    "type": "Parallel Reasoning",
+    "stimulus": "All mammals are warm-blooded. Dolphins are mammals. Therefore, dolphins are warm-blooded.",
+    "question": "Which of the following most closely parallels the reasoning above?",
+    "choices": {"A": "Some birds can fly. Penguins are birds. Therefore, penguins can fly.", "B": "All contracts require consideration. This agreement has consideration. Therefore, this agreement is a contract.", "C": "All registered voters are citizens. Ahmed is a citizen. Therefore, Ahmed is a registered voter.", "D": "All felonies are crimes. Robbery is a felony. Therefore, robbery is a crime."},
+    "correct": "D",
+    "explanation": "The original uses: All A are B; X is A; therefore X is B. Choice D matches: All felonies are crimes; robbery is a felony; therefore robbery is a crime."
+  },
+  {
+    "type": "Principle",
+    "stimulus": "A journalist published a story that was later found to contain a factual error. The error was minor and did not change the story's central conclusion. The editor chose not to issue a correction.",
+    "question": "Which principle, if established, most closely conforms to the editor's decision?",
+    "choices": {"A": "Corrections should be issued whenever any factual error appears in print.", "B": "Minor errors that do not affect a story's conclusion do not require correction.", "C": "Editors should defer all correction decisions to the original journalist.", "D": "Stories should be retracted whenever they contain factual errors."},
+    "correct": "B",
+    "explanation": "The editor decided the minor, non-material error did not warrant a correction. Choice B states exactly the principle that would justify this action."
+  },
+  {
+    "type": "Resolve",
+    "stimulus": "A university found that students who live on campus graduate at higher rates than students who commute. Yet the university also found that commuter students have higher GPAs on average than on-campus residents.",
+    "question": "Which of the following, if true, best reconciles the apparent discrepancy?",
+    "choices": {"A": "On-campus housing is more expensive than off-campus apartments.", "B": "Commuter students are more likely to drop out for financial reasons unrelated to academic performance.", "C": "On-campus students have greater access to extracurricular activities.", "D": "GPA is the most important factor universities consider when awarding degrees."},
+    "correct": "B",
+    "explanation": "Commuters drop out for financial reasons, not academic ones — explaining why high GPA doesn't translate into higher graduation rates."
+  },
+  {
+    "type": "Reading Comprehension",
+    "stimulus": "The doctrine of promissory estoppel holds that a promise may be enforceable even without consideration if the promisee reasonably relied on it to their detriment. Courts have applied this doctrine cautiously, requiring that reliance be both reasonable and foreseeable by the promisor.",
+    "question": "According to the passage, which of the following is required for promissory estoppel to apply?",
+    "choices": {"A": "The promise must be supported by consideration.", "B": "The promisee's reliance must be both reasonable and foreseeable by the promisor.", "C": "A court must find that the promisor acted in bad faith.", "D": "The promisee must have suffered a financial loss greater than the value of the promise."},
+    "correct": "B",
+    "explanation": "The passage states courts require that reliance be 'both reasonable and foreseeable by the promisor.' Choice A is wrong — the doctrine applies precisely when there is no consideration."
+  },
+  {
+    "type": "Weaken",
+    "stimulus": "Our city's recycling rate increased by 15% after we added recycling bins to every street corner. Therefore, adding more bins to public spaces is the most effective way to increase recycling.",
+    "question": "Which of the following, if true, most weakens the conclusion?",
+    "choices": {"A": "The city launched a public education campaign about recycling at the same time as the bins were added.", "B": "Other cities have not seen similar increases after adding bins.", "C": "The bins cost the city $2 million to install and maintain.", "D": "Recycling rates vary significantly by neighborhood."},
+    "correct": "A",
+    "explanation": "If the education campaign ran simultaneously, it could be the actual cause of the increased recycling — undermining the claim that bins alone were responsible."
+  },
+  {
+    "type": "Weaken",
+    "stimulus": "People who eat breakfast every day have lower rates of obesity than those who skip breakfast. Therefore, eating breakfast prevents obesity.",
+    "question": "Which of the following, if true, most undermines the argument?",
+    "choices": {"A": "Breakfast foods tend to be lower in calories than lunch foods.", "B": "People who eat breakfast regularly also tend to have other healthy habits like exercising.", "C": "Obesity rates vary based on genetic factors.", "D": "Some people who skip breakfast are not obese."},
+    "correct": "B",
+    "explanation": "Confounding variables — the other healthy habits of breakfast eaters — could explain lower obesity rates, not breakfast itself."
+  },
+  {
+    "type": "Weaken",
+    "stimulus": "The introduction of a new math curriculum in Westfield schools coincided with a 10-point increase in average standardized test scores over two years. School officials credit the new curriculum for the improvement.",
+    "question": "Which of the following, if true, most weakens the officials' claim?",
+    "choices": {"A": "The standardized test was revised to be slightly easier in the same year the curriculum changed.", "B": "Teachers in Westfield received additional training alongside the curriculum change.", "C": "Other districts using different curricula also saw score increases.", "D": "The new curriculum cost twice as much as the previous one."},
+    "correct": "A",
+    "explanation": "If the test became easier, the score increases may simply reflect a lower bar, not improved learning from the new curriculum."
+  },
+  {
+    "type": "Weaken",
+    "stimulus": "Countries with higher chocolate consumption per capita have more Nobel Prize winners per capita. Therefore, eating chocolate enhances cognitive ability.",
+    "question": "Which of the following, if true, most weakens this conclusion?",
+    "choices": {"A": "Countries with high chocolate consumption also tend to have higher average incomes, which correlate with better education and research funding.", "B": "Some Nobel Prize winners do not eat chocolate.", "C": "Chocolate contains flavonoids that have been shown to improve memory in laboratory settings.", "D": "The relationship between chocolate and Nobel Prizes holds across multiple continents."},
+    "correct": "A",
+    "explanation": "Wealth is a confounding variable — richer countries can afford both more chocolate and better research, making the correlation spurious."
+  },
+  {
+    "type": "Weaken",
+    "stimulus": "Hospital data shows that patients who receive more visits from family members recover faster. Therefore, hospitals should encourage more family visits to speed patient recovery.",
+    "question": "Which of the following, if true, most weakens the recommendation?",
+    "choices": {"A": "Some patients find family visits stressful rather than comforting.", "B": "Patients with mild conditions both recover faster and are more able to receive visitors.", "C": "Family visits can sometimes spread infections to vulnerable patients.", "D": "Hospitals already allow family visits during standard visiting hours."},
+    "correct": "B",
+    "explanation": "Patients with milder illnesses recover faster and can also receive more visitors — so the direction of causation may be reversed."
+  },
+  {
+    "type": "Strengthen",
+    "stimulus": "A pharmaceutical company claims its new drug reduces migraines. In clinical trials, patients taking the drug reported 40% fewer migraines than before.",
+    "question": "Which of the following, if true, most strengthens this claim?",
+    "choices": {"A": "Patients taking a placebo reported only a 5% reduction in migraines over the same period.", "B": "The drug was developed over a decade of research.", "C": "Migraines affect approximately 15% of the global population.", "D": "The drug has minimal side effects."},
+    "correct": "A",
+    "explanation": "The placebo comparison rules out the possibility that the reduction was due to the passage of time or psychological effects, strengthening the causal claim."
+  },
+  {
+    "type": "Strengthen",
+    "stimulus": "Researchers argue that playing a musical instrument in childhood leads to improved mathematical ability in adulthood.",
+    "question": "Which of the following provides the strongest support for this conclusion?",
+    "choices": {"A": "Many famous mathematicians were also accomplished musicians.", "B": "In a longitudinal study, children randomly assigned to music lessons scored significantly higher on math assessments at age 18 than a control group.", "C": "Music and mathematics both involve pattern recognition.", "D": "Children who enjoy music tend to be diligent students overall."},
+    "correct": "B",
+    "explanation": "Random assignment eliminates selection bias, making this the strongest causal evidence — children who happened to like music or be diligent didn't self-select into the music group."
+  },
+  {
+    "type": "Strengthen",
+    "stimulus": "A nutritionist argues that reducing sugar intake causes weight loss.",
+    "question": "Which of the following, if true, most strengthens this argument?",
+    "choices": {"A": "In a controlled experiment, participants who reduced sugar intake while keeping all other dietary factors constant lost significantly more weight than those who did not.", "B": "Sugar is high in calories.", "C": "Most people who lose weight report that they reduced sugar intake.", "D": "Obesity rates have risen alongside increases in sugar consumption nationally."},
+    "correct": "A",
+    "explanation": "A controlled experiment holding all other factors constant isolates sugar reduction as the cause of weight loss, providing direct causal evidence."
+  },
+  {
+    "type": "Strengthen",
+    "stimulus": "Advocates claim that raising the minimum wage does not cause significant unemployment because employers absorb higher labor costs through reduced profits and minor price increases.",
+    "question": "Which of the following, if true, most strengthens this claim?",
+    "choices": {"A": "Some economists argue that any minimum wage increase will reduce employment.", "B": "States that raised their minimum wage showed no statistically significant increase in unemployment compared to neighboring states that did not.", "C": "Restaurant owners report that minimum wage increases are difficult to manage.", "D": "Minimum wage has not kept pace with inflation over the past 30 years."},
+    "correct": "B",
+    "explanation": "Comparing neighboring states provides a natural experiment — similar economic conditions with one key difference — providing strong evidence that the wage increase did not cause unemployment."
+  },
+  {
+    "type": "Strengthen",
+    "stimulus": "The mayor argues that building a new public park in the downtown area will reduce crime in the surrounding blocks.",
+    "question": "Which of the following, if true, most supports the mayor's argument?",
+    "choices": {"A": "Parks increase property values in urban areas.", "B": "In cities where new parks were built in previously high-crime areas, crime rates dropped significantly in the two blocks surrounding each park within one year.", "C": "The proposed park site is currently an abandoned lot.", "D": "Residents near existing parks report higher quality of life."},
+    "correct": "B",
+    "explanation": "This provides direct precedent — parks in comparable situations produced the specific outcome the mayor is predicting."
+  },
+  {
+    "type": "Assumption",
+    "stimulus": "Since all professional athletes train daily, and Marcus trains daily, Marcus must be a professional athlete.",
+    "question": "The argument is valid only if which of the following is assumed?",
+    "choices": {"A": "Marcus is as physically fit as a professional athlete.", "B": "Only professional athletes train daily.", "C": "Marcus has professional athletic talent.", "D": "Daily training is the defining characteristic of professionalism in sports."},
+    "correct": "B",
+    "explanation": "The argument moves from 'all pro athletes train daily' to 'Marcus trains daily, therefore he is a pro athlete.' This is only valid if training daily is exclusive to professional athletes."
+  },
+  {
+    "type": "Assumption",
+    "stimulus": "The new zoning ordinance will reduce traffic congestion because it limits the number of new commercial developments that can be built in the downtown core.",
+    "question": "Which assumption is the argument relying on?",
+    "choices": {"A": "Traffic congestion is the city's most pressing problem.", "B": "Commercial developments in the downtown core are a significant source of traffic congestion.", "C": "The ordinance will be strictly enforced by city planners.", "D": "Reducing commercial development will also reduce residential development."},
+    "correct": "B",
+    "explanation": "The argument assumes commercial downtown development causes congestion — without this, limiting such development would have no predicted effect on traffic."
+  },
+  {
+    "type": "Assumption",
+    "stimulus": "This candidate will make an excellent senator because she has extensive business experience. Senators need to understand economic policy, and business experience provides that understanding.",
+    "question": "Which of the following is an assumption of this argument?",
+    "choices": {"A": "The candidate has no political experience.", "B": "Business experience is sufficient to qualify someone for the senate.", "C": "Understanding economic policy is the primary qualification for a senator.", "D": "The candidate's business experience is relevant to the type of economic policy senators handle."},
+    "correct": "D",
+    "explanation": "The argument assumes the business experience is the right kind — if she ran a coffee shop, that might not prepare her for federal monetary policy. Relevance is the hidden assumption."
+  },
+  {
+    "type": "Assumption",
+    "stimulus": "Meditation reduces stress. Reduced stress improves sleep quality. Therefore, meditation improves sleep quality.",
+    "question": "Which of the following must be assumed for the conclusion to follow?",
+    "choices": {"A": "Meditation is the only way to reduce stress.", "B": "Meditation's stress-reduction effects are sufficient to produce meaningful sleep improvement.", "C": "People who meditate also exercise regularly.", "D": "All sleep problems are caused by stress."},
+    "correct": "B",
+    "explanation": "Even if meditation reduces stress somewhat, the argument only works if that reduction is enough to actually improve sleep — this degree of effect is the unstated assumption."
+  },
+  {
+    "type": "Assumption",
+    "stimulus": "Dr. Patel has published more papers than any other researcher in the department, so she should receive the promotion to full professor.",
+    "question": "The argument assumes which of the following?",
+    "choices": {"A": "Publication count is the sole criterion for promotion to full professor.", "B": "Publication count is at least one valid criterion for the promotion.", "C": "Dr. Patel's papers are of high quality.", "D": "Full professors in the department are required to publish regularly."},
+    "correct": "B",
+    "explanation": "The argument uses publication count as a reason for promotion but doesn't require it to be the only criterion — just that it is a relevant and valid one."
+  },
+  {
+    "type": "Flaw",
+    "stimulus": "No one has ever proved that the ancient city of Atlantis did not exist. Therefore, Atlantis must have existed.",
+    "question": "The reasoning is flawed because it",
+    "choices": {"A": "draws a conclusion about the past from evidence about the present.", "B": "treats the absence of disproof as proof of existence.", "C": "relies on the testimony of ancient writers who may have been mistaken.", "D": "confuses physical evidence with historical documentation."},
+    "correct": "B",
+    "explanation": "The argument commits an appeal to ignorance — the failure to disprove something does not constitute proof that it is true."
+  },
+  {
+    "type": "Flaw",
+    "stimulus": "Senator Johnson argues for stricter environmental regulations. But Senator Johnson was once fined for illegal dumping. Therefore, his arguments for environmental regulation should be dismissed.",
+    "question": "The argument above is flawed because it",
+    "choices": {"A": "does not consider all available evidence about the senator's record.", "B": "attacks the senator's character rather than addressing the merits of his argument.", "C": "assumes that only environmentally virtuous people can advocate for regulation.", "D": "draws a false analogy between personal behavior and public policy."},
+    "correct": "B",
+    "explanation": "This is an ad hominem attack — the senator's past conduct is irrelevant to whether his environmental arguments are sound."
+  },
+  {
+    "type": "Flaw",
+    "stimulus": "Either we increase police funding or crime will rise dramatically. We have not increased police funding. Therefore, crime will rise dramatically.",
+    "question": "The flaw in the argument is that it",
+    "choices": {"A": "assumes a causal relationship that has not been established.", "B": "presents only two options when there may be others that could prevent rising crime.", "C": "relies on a prediction rather than established fact.", "D": "incorrectly applies a general principle to a specific case."},
+    "correct": "B",
+    "explanation": "The false dilemma — assuming only two options exist — is the core flaw. Community programs, social investment, or other factors might prevent rising crime."
+  },
+  {
+    "type": "Flaw",
+    "stimulus": "I asked ten of my friends whether they preferred coffee or tea, and eight said coffee. Therefore, the majority of people in this country prefer coffee.",
+    "question": "The argument is most vulnerable to which criticism?",
+    "choices": {"A": "It does not specify what kind of coffee or tea was being compared.", "B": "It generalizes from a small, unrepresentative sample to the entire population.", "C": "It ignores the possibility that preferences can change over time.", "D": "It fails to account for people who drink neither coffee nor tea."},
+    "correct": "B",
+    "explanation": "Ten friends are an unrepresentative sample — they likely share demographics and social circles with the surveyor, making any national conclusion invalid."
+  },
+  {
+    "type": "Flaw",
+    "stimulus": "People should not take medical advice from celebrities. After all, most celebrities are not doctors.",
+    "question": "This argument is flawed because it",
+    "choices": {"A": "assumes that medical advice must come from doctors.", "B": "fails to consider that some celebrities are also medical professionals.", "C": "draws on the authority of doctors without establishing their credibility.", "D": "confuses giving advice with being qualified to give advice."},
+    "correct": "B",
+    "explanation": "Some celebrities may be doctors or have medical credentials — the argument ignores exceptions that could undermine its sweeping conclusion."
+  },
+  {
+    "type": "Inference",
+    "stimulus": "No employees at Acme Corp receive performance bonuses unless they have been with the company for at least two years. Sandra has been with Acme for three years and received a bonus last quarter.",
+    "question": "Which of the following can be properly inferred?",
+    "choices": {"A": "Sandra is one of Acme's best-performing employees.", "B": "Sandra met the tenure requirement for bonus eligibility.", "C": "Employees with three years of tenure always receive bonuses.", "D": "Sandra will receive a bonus again next quarter."},
+    "correct": "B",
+    "explanation": "Sandra's three years of tenure satisfies the stated minimum requirement. We cannot infer she will always get one or is a top performer — only that she was eligible."
+  },
+  {
+    "type": "Inference",
+    "stimulus": "Every city that hosted the summer Olympics in the past 30 years experienced a significant increase in tourism in the following decade. Athens hosted the 2004 Olympics.",
+    "question": "Which of the following is most strongly supported by these statements?",
+    "choices": {"A": "Athens is now one of Europe's top tourist destinations.", "B": "The 2004 Olympics were the most successful in recent history.", "C": "Athens likely experienced a significant increase in tourism in the decade following 2004.", "D": "Hosting the Olympics is the most effective way to boost tourism."},
+    "correct": "C",
+    "explanation": "The universal pattern (every host city experienced tourism growth) applied to a specific case (Athens) supports C. The other choices go beyond what the statements establish."
+  },
+  {
+    "type": "Inference",
+    "stimulus": "Some law students find contract law difficult. All students who find contract law difficult spend more time on it than on other subjects.",
+    "question": "Which of the following must be true based on the statements above?",
+    "choices": {"A": "All law students spend extra time on contract law.", "B": "Some law students spend more time on contract law than on other subjects.", "C": "Contract law is the hardest subject in law school.", "D": "Students who spend extra time on contract law find it difficult."},
+    "correct": "B",
+    "explanation": "Some law students find it difficult (premise 1), and all who find it difficult spend extra time on it (premise 2). Therefore, some law students spend extra time on it."
+  },
+  {
+    "type": "Inference",
+    "stimulus": "The Cranston Building is taller than the Parker Tower. The Meridian Center is shorter than the Parker Tower. The Oswald Plaza is the tallest building in the city.",
+    "question": "Which of the following can be properly inferred?",
+    "choices": {"A": "The Cranston Building is taller than the Meridian Center.", "B": "The Parker Tower is the second-tallest building in the city.", "C": "The Oswald Plaza is taller than the Cranston Building.", "D": "Both A and C."},
+    "correct": "D",
+    "explanation": "A: Cranston > Parker > Meridian, so Cranston > Meridian. C: Oswald is the tallest, so it is taller than Cranston. Both follow directly."
+  },
+  {
+    "type": "Main Point",
+    "stimulus": "Although vitamin supplements are widely consumed, most nutritionists argue that obtaining nutrients through whole foods is superior. Whole foods provide nutrients in combinations and concentrations that have evolved alongside human digestion. Supplements isolate compounds that may lose effectiveness outside their natural context.",
+    "question": "The main point of the argument is that",
+    "choices": {"A": "vitamin supplements are a waste of money.", "B": "whole foods are a better source of nutrients than supplements because of how nutrients naturally interact.", "C": "nutritionists are generally more credible than supplement manufacturers.", "D": "supplements may contain harmful isolated compounds."},
+    "correct": "B",
+    "explanation": "The argument's conclusion is that whole foods are superior because nutrients work better in their natural combinations — choices A, C, and D either overstate or shift the point."
+  },
+  {
+    "type": "Main Point",
+    "stimulus": "Many people believe that multitasking improves productivity. Research consistently shows, however, that the human brain cannot truly focus on two cognitive tasks simultaneously. What appears to be multitasking is actually rapid task-switching, which increases cognitive load and error rates.",
+    "question": "Which of the following best states the main conclusion of the passage?",
+    "choices": {"A": "People who multitask make more mistakes than those who focus on one task.", "B": "Contrary to popular belief, multitasking reduces rather than enhances productivity.", "C": "The brain is incapable of performing any two tasks at the same time.", "D": "Cognitive load increases when people attempt to work quickly."},
+    "correct": "B",
+    "explanation": "The passage argues against the popular belief by showing multitasking is actually rapid task-switching that hurts performance — choice B captures this directly."
+  },
+  {
+    "type": "Main Point",
+    "stimulus": "Proponents of mandatory voting argue that higher turnout produces governments that better represent the population. However, forcing citizens to vote does not ensure they are informed voters. An uninformed electorate may produce worse governance than a smaller but more engaged one.",
+    "question": "What is the main conclusion of this argument?",
+    "choices": {"A": "Mandatory voting should be abolished worldwide.", "B": "Voter turnout is irrelevant to the quality of government.", "C": "Mandatory voting may not improve governance because participation without knowledge can be harmful.", "D": "Governments elected by small electorates are better than those elected by large ones."},
+    "correct": "C",
+    "explanation": "The passage does not condemn mandatory voting outright — it argues that high turnout alone doesn't guarantee better government because uninformed voting can backfire."
+  },
+  {
+    "type": "Parallel Reasoning",
+    "stimulus": "If it rains, the picnic will be cancelled. It rained. Therefore, the picnic was cancelled.",
+    "question": "Which argument has the same logical structure?",
+    "choices": {"A": "If the defendant is guilty, there must be evidence. There is no evidence. Therefore, the defendant is not guilty.", "B": "If the contract is signed, the deal closes. The contract was signed. Therefore, the deal closed.", "C": "The deal will close only if the contract is signed. The deal closed. Therefore, the contract was signed.", "D": "If traffic is heavy, we will be late. We were late. Therefore, traffic was heavy."},
+    "correct": "B",
+    "explanation": "The original structure is: If P then Q; P; therefore Q (modus ponens). Choice B follows the same valid form."
+  },
+  {
+    "type": "Parallel Reasoning",
+    "stimulus": "All birds have feathers. No reptiles have feathers. Therefore, no reptiles are birds.",
+    "question": "Which of the following most closely parallels the reasoning?",
+    "choices": {"A": "All metals conduct electricity. Plastic does not conduct electricity. Therefore, plastic is not a metal.", "B": "All metals conduct electricity. Copper conducts electricity. Therefore, copper is a metal.", "C": "No wood conducts electricity. Some plants are made of wood. Therefore, some plants do not conduct electricity.", "D": "Electricity is dangerous. Metals conduct electricity. Therefore, metals are dangerous."},
+    "correct": "A",
+    "explanation": "The pattern is: All A have property P; B does not have property P; therefore B is not A. Choice A matches exactly."
+  },
+  {
+    "type": "Principle",
+    "stimulus": "A company gives an employee a warning for repeatedly arriving late. The employee then arrives on time for six consecutive weeks. The manager decides not to escalate discipline.",
+    "question": "Which principle, if established, most justifies the manager's decision?",
+    "choices": {"A": "Employees who correct bad behavior after a warning should not face further disciplinary action.", "B": "Managers should always follow a predetermined disciplinary schedule.", "C": "Six weeks is insufficient time to determine whether an employee has changed.", "D": "Warnings should be reserved for serious offenses, not tardiness."},
+    "correct": "A",
+    "explanation": "The manager rewarded demonstrated correction of behavior — choice A is the principle that would justify not escalating after sustained improvement."
+  },
+  {
+    "type": "Principle",
+    "stimulus": "A city council votes to deny a building permit for a skyscraper after residents argue it will block sunlight to a public park. The council agrees that preserving public green spaces is a priority.",
+    "question": "Which principle best supports the council's decision?",
+    "choices": {"A": "Private development should always yield to the preferences of local residents.", "B": "The public benefit of green spaces can outweigh the private benefit of commercial development.", "C": "Skyscrapers should not be built in urban areas near parks.", "D": "City councils are responsible for enforcing zoning laws."},
+    "correct": "B",
+    "explanation": "The council weighed public benefit (park sunlight) against private benefit (development) and chose the public interest — choice B captures this balancing principle."
+  },
+  {
+    "type": "Resolve",
+    "stimulus": "Studies show that people who sleep more than nine hours per night have worse health outcomes than those who sleep seven to eight hours. However, doctors recommend that sick patients sleep as much as possible.",
+    "question": "Which of the following best reconciles these seemingly contradictory findings?",
+    "choices": {"A": "The health problems of long sleepers cause them to sleep more, not the other way around.", "B": "Doctors are not always correct in their recommendations.", "C": "Sleep needs vary significantly between individuals.", "D": "Seven to eight hours is the amount that maximizes REM sleep."},
+    "correct": "A",
+    "explanation": "The direction of causation resolves the paradox: illness causes long sleep, not long sleep causing illness. Sick patients are advised to sleep more precisely because sleep aids recovery."
+  },
+  {
+    "type": "Resolve",
+    "stimulus": "The town of Millbrook installed red-light cameras at its ten busiest intersections. The number of accidents at those intersections increased in the year following installation.",
+    "question": "Which of the following, if true, most helps to explain this result?",
+    "choices": {"A": "Drivers unfamiliar with the cameras were caught off guard by sudden braking at intersections.", "B": "Red-light cameras are expensive to maintain.", "C": "Millbrook's population grew significantly that year.", "D": "Some drivers ran red lights even after the cameras were installed."},
+    "correct": "A",
+    "explanation": "Sudden braking by camera-aware drivers and rear-end collisions from following drivers who don't brake in time would explain the paradoxical increase in accidents."
+  },
+  {
+    "type": "Resolve",
+    "stimulus": "A study found that countries with more doctors per capita have higher rates of certain diseases. This seems counterintuitive given that more doctors should mean better healthcare.",
+    "question": "Which of the following, if true, most helps resolve this paradox?",
+    "choices": {"A": "Countries with more doctors also tend to have older populations, which are more susceptible to disease.", "B": "Medical schools in those countries have lower admission standards.", "C": "Healthcare costs are higher in countries with more doctors.", "D": "Countries with more doctors per capita are more urbanized."},
+    "correct": "A",
+    "explanation": "Older populations both attract more doctors (due to higher medical demand) and have higher disease rates — removing the apparent paradox by identifying a third variable."
+  },
+  {
+    "type": "Reading Comprehension",
+    "stimulus": "The tort of negligence requires plaintiffs to establish four elements: duty, breach, causation, and damages. A duty of care exists when a defendant's conduct poses a foreseeable risk of harm to a plaintiff. Breach occurs when the defendant falls below the standard of care a reasonable person would exercise. Causation has two components: actual cause (the defendant's breach was a cause-in-fact of the harm) and proximate cause (the harm was a foreseeable consequence of the breach). Without all four elements, a negligence claim fails.",
+    "question": "According to the passage, which of the following would defeat a negligence claim?",
+    "choices": {"A": "The defendant owed the plaintiff a duty of care.", "B": "The defendant's conduct was careless but caused no harm to the plaintiff.", "C": "The plaintiff suffered significant financial losses.", "D": "The defendant's breach was a cause-in-fact of the plaintiff's injury."},
+    "correct": "B",
+    "explanation": "Without damages — actual harm — a negligence claim fails. Choice B describes a situation where three elements (duty, breach, possibly causation) exist but damages do not."
+  },
+  {
+    "type": "Reading Comprehension",
+    "stimulus": "Behavioral economists distinguish between System 1 and System 2 thinking. System 1 is fast, automatic, and intuitive — it handles routine decisions with minimal effort. System 2 is slow, deliberate, and analytical — it engages when problems require careful reasoning. Most everyday decisions rely on System 1, which is efficient but prone to cognitive biases. Nudge theory exploits System 1's dominance by designing choice architectures that steer people toward better decisions without removing their freedom to choose otherwise.",
+    "question": "According to the passage, nudge theory primarily works by",
+    "choices": {"A": "forcing people to make deliberate, analytical decisions.", "B": "exploiting the automatic, intuitive nature of everyday decision-making.", "C": "removing harmful options from the choice environment.", "D": "educating people about their cognitive biases."},
+    "correct": "B",
+    "explanation": "The passage states nudge theory exploits System 1's dominance — the fast, automatic mode — by structuring choices to produce better outcomes automatically."
+  },
+  {
+    "type": "Reading Comprehension",
+    "stimulus": "The Sherman Antitrust Act of 1890 prohibits contracts, combinations, and conspiracies in restraint of trade, as well as monopolization and attempts to monopolize. Courts have interpreted these provisions through two frameworks: the per se rule and the rule of reason. Per se violations — such as price-fixing among competitors — are conclusively presumed to harm competition without any balancing of benefits. Rule of reason analysis, by contrast, requires courts to weigh the anti-competitive harms against any pro-competitive benefits before condemning a practice.",
+    "question": "Based on the passage, which of the following would most likely be analyzed under the rule of reason rather than the per se rule?",
+    "choices": {"A": "An agreement among three competing airlines to set identical ticket prices.", "B": "A manufacturer's agreement with retailers that restricts where they can sell the manufacturer's products.", "C": "A conspiracy among competitors to divide geographic markets.", "D": "An agreement among law firms to charge clients the same hourly rate."},
+    "correct": "B",
+    "explanation": "Vertical restraints (manufacturer-retailer) are typically analyzed under the rule of reason. The other choices resemble horizontal price-fixing or market division, classic per se violations."
+  },
+  {
+    "type": "Flaw",
+    "stimulus": "Professor Kim always gives excellent lectures, so she must also be an excellent researcher.",
+    "question": "The argument is most vulnerable to the criticism that it",
+    "choices": {"A": "relies on anecdotal evidence about Professor Kim's lectures.", "B": "assumes that excellence in one academic skill guarantees excellence in a different, distinct skill.", "C": "fails to consider that research and teaching require the same abilities.", "D": "draws on hearsay rather than direct observation."},
+    "correct": "B",
+    "explanation": "Teaching and research are distinct skills — excellence in one does not entail excellence in the other. The argument conflates separable competencies."
+  },
+  {
+    "type": "Flaw",
+    "stimulus": "Eighty percent of successful entrepreneurs read at least one book per week. Therefore, if you want to be a successful entrepreneur, you should read at least one book per week.",
+    "question": "The reasoning is flawed because it",
+    "choices": {"A": "fails to define what counts as a 'successful' entrepreneur.", "B": "assumes that a behavior common among successful entrepreneurs caused their success.", "C": "ignores the possibility that some books are more useful than others.", "D": "uses a sample size that is too small to draw reliable conclusions."},
+    "correct": "B",
+    "explanation": "Correlation is mistaken for causation — reading one book per week might be a habit of successful people without being a cause of their success."
+  },
+  {
+    "type": "Weaken",
+    "stimulus": "Organic produce has grown in popularity because consumers believe it is more nutritious than conventionally grown produce. Since organic sales have tripled, producers should shift entirely to organic farming to maximize profits.",
+    "question": "Which of the following, if true, most weakens the recommendation?",
+    "choices": {"A": "Organic farming is significantly more expensive to operate and organic produce sells at only slightly higher prices, resulting in lower profit margins than conventional farming.", "B": "Consumers prefer the taste of organic produce.", "C": "Organic farming is better for the environment.", "D": "The organic market is growing faster than the conventional produce market."},
+    "correct": "A",
+    "explanation": "If organic farming costs significantly more but doesn't price at a proportionally higher margin, shifting entirely to organic would reduce, not maximize, profits."
+  },
+  {
+    "type": "Assumption",
+    "stimulus": "This policy will reduce unemployment because it creates financial incentives for businesses to hire more workers.",
+    "question": "The argument assumes which of the following?",
+    "choices": {"A": "Businesses currently have the capacity to hire more workers.", "B": "Financial incentives are the primary reason businesses hire workers.", "C": "Businesses will actually respond to the financial incentives by hiring more workers.", "D": "The government can afford to fund the financial incentives."},
+    "correct": "C",
+    "explanation": "The argument moves from 'incentives exist' to 'unemployment falls' — this only works if businesses actually respond to those incentives by hiring, which is the unstated assumption."
+  },
+  {
+    "type": "Inference",
+    "stimulus": "No historical novel on the best-seller list this year was written in fewer than three years. The Meridian Pact, a historical novel, was written in eighteen months.",
+    "question": "Which of the following can be properly concluded?",
+    "choices": {"A": "The Meridian Pact is not a well-written novel.", "B": "The Meridian Pact is not on the best-seller list this year.", "C": "Novels that take longer to write are always better.", "D": "Historical novels are generally more difficult to write than other genres."},
+    "correct": "B",
+    "explanation": "The Meridian Pact was written in 18 months, which is fewer than three years. Since no such novel is on the best-seller list, it follows that The Meridian Pact is not on it."
+  },
+  {
+    "type": "Principle",
+    "stimulus": "A prosecutor declines to charge a suspect despite having sufficient evidence, because the suspect cooperated with investigators and provided information that led to the arrest of a more serious offender.",
+    "question": "Which principle best justifies the prosecutor's decision?",
+    "choices": {"A": "Prosecutors have an absolute duty to charge any suspect for whom sufficient evidence exists.", "B": "Cooperation with authorities that leads to the capture of more serious offenders may justify prosecutorial leniency.", "C": "Evidence obtained through cooperation is inherently less reliable than other evidence.", "D": "The severity of a crime should be the sole factor in prosecutorial decisions."},
+    "correct": "B",
+    "explanation": "The prosecutor exchanged leniency for cooperation that served a greater law enforcement interest — choice B captures this prosecutorial discretion principle."
+  },
+  {
+    "type": "Resolve",
+    "stimulus": "A school introduced a new homework policy requiring students to complete assignments online. After the policy was implemented, students' test scores declined.",
+    "question": "Which of the following, if true, best explains the decline?",
+    "choices": {"A": "Many students in the school do not have reliable internet access at home.", "B": "Online assignments are less engaging than paper-based ones.", "C": "The teachers who assign online homework also give harder tests.", "D": "Students prefer paper-based assignments."},
+    "correct": "A",
+    "explanation": "If many students lack internet access, they would be unable to complete assignments, explaining declining performance without any inherent flaw in digital learning."
+  },
+  {
+    "type": "Weaken",
+    "stimulus": "Violent video games must cause real-world violence because violent crime rates rose in the decade that saw the largest growth in video game sales.",
+    "question": "Which of the following most effectively challenges this conclusion?",
+    "choices": {"A": "Many peaceful countries also have high rates of video game consumption.", "B": "The video games that grew most in sales were not particularly violent.", "C": "Studies in laboratory settings show that players become more aggressive immediately after playing violent games.", "D": "Violent crime statistics are reported differently across different jurisdictions."},
+    "correct": "A",
+    "explanation": "If peaceful countries also have high video game consumption without high violence rates, it undermines the claim that video games cause violence."
+  },
+  {
+    "type": "Strengthen",
+    "stimulus": "Animal studies suggest that a compound found in green tea slows the progression of Alzheimer's disease.",
+    "question": "Which of the following, if true, most strengthens the prospect that this compound will be effective in humans?",
+    "choices": {"A": "Green tea has been consumed by humans for thousands of years without harmful effects.", "B": "The biological mechanisms by which the compound affects Alzheimer's markers in mice are identical to those pathways in the human brain.", "C": "People who drink green tea report feeling more mentally alert.", "D": "The compound has been isolated and can be produced synthetically."},
+    "correct": "B",
+    "explanation": "Identical biological mechanisms mean the animal findings are directly relevant to humans — bridging the typical gap between animal studies and human application."
+  },
+  {
+    "type": "Main Point",
+    "stimulus": "Zoning laws that require minimum parking spaces for new buildings were designed to reduce parking scarcity. However, by mandating parking, cities encourage car ownership and use, which generates more traffic and creates demand for yet more parking. The solution to parking scarcity is not to require more parking but to reduce the need for cars by investing in public transit.",
+    "question": "The main point of this argument is that",
+    "choices": {"A": "zoning laws should be eliminated entirely.", "B": "minimum parking requirements worsen rather than solve urban transportation problems.", "C": "public transit investment is always more cost-effective than road infrastructure.", "D": "car ownership is declining in modern cities."},
+    "correct": "B",
+    "explanation": "The argument specifically attacks parking minimums as counterproductive — they encourage the very car use that creates parking demand — and proposes transit as the real solution."
+  },
+  {
+    "type": "Parallel Reasoning",
+    "stimulus": "Either the defendant was at the scene or he has an alibi. He does not have an alibi. Therefore, he was at the scene.",
+    "question": "Which of the following has the same logical structure?",
+    "choices": {"A": "Either it will snow or it will rain. It did not snow. Therefore, it rained.", "B": "Either it will snow or it will rain. It snowed. Therefore, it did not rain.", "C": "If it snows, the roads will be icy. The roads are icy. Therefore, it snowed.", "D": "It will snow only if temperatures drop below freezing. Temperatures dropped. Therefore, it will snow."},
+    "correct": "A",
+    "explanation": "The original uses disjunctive syllogism: P or Q; not P; therefore Q. Choice A has the same form with different content."
+  },
+  {
+    "type": "Flaw",
+    "stimulus": "The ancient Romans built aqueducts. The ancient Romans also had slaves. Therefore, aqueduct-building depends on slave labor.",
+    "question": "The argument is flawed because it",
+    "choices": {"A": "confuses sequence with causation.", "B": "assumes that two things that coexist must be causally related.", "C": "relies on historical evidence that cannot be verified.", "D": "makes a sweeping generalization from a single historical example."},
+    "correct": "B",
+    "explanation": "Co-occurrence does not imply causal dependence. Many civilizations have built aqueducts without slave labor, showing the relationship is accidental, not necessary."
+  },
+  {
+    "type": "Inference",
+    "stimulus": "All of the paintings in the gallery's permanent collection were acquired before 1990. The museum's provenance records show that 'Sunrise over the Valley' was acquired in 2003.",
+    "question": "Which conclusion follows most directly?",
+    "choices": {"A": "'Sunrise over the Valley' is not part of the gallery's permanent collection.", "B": "'Sunrise over the Valley' was painted before 1990.", "C": "Paintings acquired after 1990 are not displayed in the gallery.", "D": "The gallery stopped acquiring permanent collection pieces in 1990."},
+    "correct": "A",
+    "explanation": "Since all permanent collection works were acquired before 1990, and this painting was acquired in 2003, it cannot be in the permanent collection."
+  },
+  {
+    "type": "Reading Comprehension",
+    "stimulus": "Contract law generally requires three elements for a valid contract: offer, acceptance, and consideration. Consideration refers to something of value exchanged between the parties. A promise to make a gift, while morally meaningful, lacks consideration and is therefore generally unenforceable. Courts have carved out narrow exceptions, such as promissory estoppel, for cases where injustice would result from strict enforcement of the consideration requirement.",
+    "question": "Based on the passage, which of the following would most likely be unenforceable as a contract?",
+    "choices": {"A": "An agreement to buy a used car for $5,000.", "B": "A promise by an employer to pay an employee a bonus in exchange for completing a project.", "C": "A grandmother's written promise to give her granddaughter $10,000 as a birthday gift.", "D": "An agreement to lease office space for one year at a monthly rate."},
+    "correct": "C",
+    "explanation": "The grandmother's promise to make a gift lacks consideration — the granddaughter gives nothing in exchange. The passage states gift promises are generally unenforceable."
+  },
+  {
+    "type": "Weaken",
+    "stimulus": "To reduce student debt, universities should freeze tuition. Since tuition has risen dramatically over the past 20 years while student debt has also risen, freezing tuition would stop debt from increasing.",
+    "question": "Which of the following, if true, most weakens this argument?",
+    "choices": {"A": "Tuition is only one component of college costs; room, board, and textbooks have also risen sharply.", "B": "Many universities have already frozen tuition in recent years.", "C": "Student debt began rising before tuition increases accelerated.", "D": "Some students receive full scholarships and do not pay tuition."},
+    "correct": "A",
+    "explanation": "If other costs — room, board, books — account for a significant portion of debt, freezing tuition alone would not stop debt from rising, undermining the proposal."
+  },
+  {
+    "type": "Assumption",
+    "stimulus": "To reduce air pollution in the city, the mayor is proposing to ban diesel trucks from the downtown core between 6 a.m. and 8 p.m. Air quality will improve significantly if this ban is implemented.",
+    "question": "The mayor's conclusion depends on which of the following assumptions?",
+    "choices": {"A": "Diesel trucks are a major contributor to downtown air pollution.", "B": "All air pollution in the city is caused by diesel trucks.", "C": "The ban will be easy to enforce.", "D": "Electric trucks are a viable alternative for freight delivery."},
+    "correct": "A",
+    "explanation": "If diesel trucks are not a significant source of downtown pollution, banning them would have no meaningful effect on air quality. This is the factual assumption the argument rests on."
+  },
+  {
+    "type": "Strengthen",
+    "stimulus": "Researchers argue that bilingual children develop better executive function — the ability to focus, switch tasks, and ignore irrelevant information — than monolingual children.",
+    "question": "Which of the following, if true, most strengthens this claim?",
+    "choices": {"A": "Bilingual children score higher on vocabulary tests.", "B": "The cognitive demands of managing two languages constantly exercise the brain regions responsible for executive function.", "C": "Children who learn a second language are more likely to travel internationally as adults.", "D": "Bilingual education programs are available in most urban school districts."},
+    "correct": "B",
+    "explanation": "This provides a plausible causal mechanism linking bilingualism to better executive function, strengthening the explanatory power of the researchers' claim."
+  },
+  {
+    "type": "Resolve",
+    "stimulus": "A company implemented a four-day workweek, expecting productivity to remain constant. Productivity actually increased by 20% over the following quarter.",
+    "question": "Which of the following, if true, best explains the productivity increase?",
+    "choices": {"A": "Employees, energized by more rest and personal time, worked more efficiently and with higher concentration during their four working days.", "B": "The company hired additional staff to cover the lost day.", "C": "The company also changed its project management software that quarter.", "D": "Four-day workweek policies are becoming more common globally."},
+    "correct": "A",
+    "explanation": "Better rest leading to higher efficiency and focus is a direct, plausible explanation for why less time at work produced more output."
+  },
+  {
+    "type": "Flaw",
+    "stimulus": "This restaurant must be excellent because it is always crowded. After all, people would not return if the food were bad.",
+    "question": "The reasoning is most vulnerable to which criticism?",
+    "choices": {"A": "It assumes that a restaurant's popularity is driven solely by food quality, ignoring factors like location, price, or social trends.", "B": "It generalizes from the experience of a few customers to all customers.", "C": "It relies on hearsay about the restaurant's reputation.", "D": "It confuses correlation with causation."},
+    "correct": "A",
+    "explanation": "Popularity might stem from low prices, a convenient location, or viral social media attention — not necessarily from food quality. The argument ignores these alternative explanations."
+  },
+  {
+    "type": "Principle",
+    "stimulus": "A social media platform removes a post that contains false information about a vaccine, even though the post has not caused any documented harm yet.",
+    "question": "Which principle best supports this content moderation decision?",
+    "choices": {"A": "Platforms are only responsible for content that has already caused demonstrable harm.", "B": "False health information poses a foreseeable risk of harm sufficient to justify preemptive removal.", "C": "All speech, including false speech, should be protected on public platforms.", "D": "Content moderation decisions should require approval from independent reviewers."},
+    "correct": "B",
+    "explanation": "The platform removed content not because harm had already occurred but because false health information poses a foreseeable risk — choice B justifies preemptive action."
+  },
+  {
+    "type": "Weaken",
+    "stimulus": "The ancient remedy of willow bark tea was used to reduce fever and pain for centuries before aspirin was developed. Since willow bark contains salicin, a compound similar to aspirin, traditional medicine clearly understood the biochemical basis of pain relief.",
+    "question": "Which of the following most weakens this claim?",
+    "choices": {"A": "Ancient healers used willow bark because it worked, not because they understood the mechanism of salicin metabolism.", "B": "Willow bark contains other compounds besides salicin.", "C": "Aspirin is more effective than willow bark for most pain relief applications.", "D": "The use of herbal remedies predates the scientific era by thousands of years."},
+    "correct": "A",
+    "explanation": "Observing that something works does not require understanding why it works. Ancient healers could have been entirely unaware of salicin's role."
+  },
+  {
+    "type": "Inference",
+    "stimulus": "Whenever interest rates rise, bond prices fall. The Federal Reserve raised interest rates last month.",
+    "question": "Which of the following can be properly concluded?",
+    "choices": {"A": "The stock market will decline.", "B": "Bond prices fell last month.", "C": "The Federal Reserve will raise rates again next month.", "D": "Investors shifted from bonds to stocks after the rate increase."},
+    "correct": "B",
+    "explanation": "The universal conditional (whenever rates rise, bond prices fall) plus the triggering event (rates rose) yields the conclusion by modus ponens."
+  },
+  {
+    "type": "Main Point",
+    "stimulus": "Many people assume that because something is 'natural,' it is safe. However, arsenic, mercury, and cyanide are all naturally occurring substances that are highly toxic. Safety is a property of a substance's effects, not its origin.",
+    "question": "The main point of the argument is that",
+    "choices": {"A": "natural substances are more dangerous than synthetic ones.", "B": "the natural origin of a substance does not make it safe.", "C": "arsenic and mercury should be regulated more strictly.", "D": "people are generally uninformed about chemistry."},
+    "correct": "B",
+    "explanation": "The examples of toxic natural substances are used to disprove the assumption that 'natural' means safe — choice B captures this directly."
+  },
+  {
+    "type": "Parallel Reasoning",
+    "stimulus": "Some philosophers are vegetarians. All vegetarians avoid eating meat. Therefore, some philosophers avoid eating meat.",
+    "question": "Which of the following uses the same reasoning pattern?",
+    "choices": {"A": "Some lawyers are politicians. All politicians attend public events. Therefore, some lawyers attend public events.", "B": "All scientists read journals. Some journals are online. Therefore, some scientists read online journals.", "C": "Some teachers are coaches. All coaches attend games. Therefore, all teachers attend games.", "D": "Some nurses are doctors. All doctors have medical degrees. Therefore, all nurses have medical degrees."},
+    "correct": "A",
+    "explanation": "The original: Some A are B; all B are C; therefore some A are C. Choice A matches this exactly."
+  },
+  {
+    "type": "Assumption",
+    "stimulus": "We should hire the candidate with the highest test score because test scores predict job performance.",
+    "question": "Which assumption is necessary for this argument to be valid?",
+    "choices": {"A": "Test scores are the only valid predictor of job performance.", "B": "The candidate with the highest score will outperform all other candidates on the job.", "C": "The test used is a valid predictor of performance in this specific role.", "D": "No other candidates have equally high scores."},
+    "correct": "C",
+    "explanation": "The argument only works if the test actually measures relevant job skills. A general IQ test, for instance, may not predict performance in a specialized technical role."
+  },
+  {
+    "type": "Flaw",
+    "stimulus": "We should not take ethical guidance from Professor Wright because he was convicted of tax fraud.",
+    "question": "The argument is flawed because it",
+    "choices": {"A": "wrongly assumes that personal misconduct invalidates professional expertise.", "B": "overstates the severity of tax fraud as a moral failing.", "C": "ignores the possibility that Professor Wright's ethical views have changed.", "D": "fails to consider the range of views among ethics professors."},
+    "correct": "A",
+    "explanation": "This is an ad hominem attack — a person's ethical theories must be evaluated on their merits, not on the theorist's personal behavior."
+  },
+  {
+    "type": "Reading Comprehension",
+    "stimulus": "The hearsay rule in evidence law generally prohibits the introduction of out-of-court statements offered to prove the truth of the matter asserted. The rationale is that the declarant was not under oath, could not be cross-examined, and the jury could not observe their demeanor. Numerous exceptions exist, however, based on the theory that certain circumstances — such as excited utterances or statements made for medical diagnosis — provide sufficient guarantees of reliability to substitute for the protections of in-court testimony.",
+    "question": "According to the passage, the hearsay rule is primarily justified by",
+    "choices": {"A": "the risk that juries will overvalue out-of-court statements.", "B": "the absence of procedural safeguards — oath, cross-examination, and demeanor observation — that promote reliable testimony.", "C": "the difficulty of authenticating written statements made outside of court.", "D": "the need to protect defendants from having prior statements used against them."},
+    "correct": "B",
+    "explanation": "The passage explicitly states the rationale: the declarant was not under oath, could not be cross-examined, and the jury could not assess their demeanor."
+  },
+  {
+    "type": "Weaken",
+    "stimulus": "Children who are read to every night by their parents score higher on reading comprehension tests. Therefore, parental bedtime reading causes improved reading comprehension.",
+    "question": "Which of the following, if true, most weakens this causal claim?",
+    "choices": {"A": "Parents who read to their children every night tend to be college-educated, and children of college-educated parents score higher on reading tests regardless of bedtime reading habits.", "B": "Some children who are not read to also score high on reading tests.", "C": "Reading comprehension scores are not a perfect measure of literacy.", "D": "The content of bedtime books varies widely in complexity."},
+    "correct": "A",
+    "explanation": "Parental education level is a confounding variable — it predicts both the habit of bedtime reading and higher test scores, potentially explaining the correlation without any causal link."
+  },
+  {
+    "type": "Strengthen",
+    "stimulus": "Architects claim that incorporating natural light into office design improves worker productivity.",
+    "question": "Which of the following, if true, provides the most direct support?",
+    "choices": {"A": "Workers report preferring offices with windows.", "B": "In a study where two otherwise identical office floors were compared — one with large windows and one with artificial lighting only — workers on the naturally lit floor completed 12% more tasks per day on average.", "C": "Natural light reduces electricity costs for businesses.", "D": "Sunlight exposure has been linked to improved mood in clinical trials."},
+    "correct": "B",
+    "explanation": "The controlled comparison of otherwise identical floors directly isolates natural light as the cause of the productivity difference."
+  },
+  {
+    "type": "Resolve",
+    "stimulus": "Despite decades of campaigns warning people about the dangers of skin cancer, rates of melanoma have increased steadily in fair-skinned populations over the same period.",
+    "question": "Which of the following, if true, best reconciles this paradox?",
+    "choices": {"A": "Public health campaigns have had documented success in reducing smoking rates.", "B": "Improved detection methods now identify melanoma cases that were previously undiagnosed, inflating apparent incidence rates.", "C": "Sunscreen use has also increased over the same period.", "D": "Melanoma is more common in older populations, and the population has been aging."},
+    "correct": "B",
+    "explanation": "Better detection could explain rising reported rates even if actual incidence is flat or falling — the apparent paradox dissolves if the increase reflects diagnosis, not disease."
+  },
+  {
+    "type": "Assumption",
+    "stimulus": "Since Professor Lee's research has been cited more than any other professor in the department, she deserves the department's Outstanding Scholar award.",
+    "question": "The argument assumes that",
+    "choices": {"A": "citation counts are the most important criterion for the Outstanding Scholar award.", "B": "Professor Lee's research is of high academic quality.", "C": "The Outstanding Scholar award has previously been given to researchers with high citation counts.", "D": "Other professors in the department have not won the award recently."},
+    "correct": "A",
+    "explanation": "The argument moves directly from 'most citations' to 'deserves the award' — this leap requires assuming citations are the primary or decisive criterion."
+  },
+  {
+    "type": "Flaw",
+    "stimulus": "A survey of marathon runners found that 90% consume energy gels during races. Therefore, energy gels must be essential for marathon performance.",
+    "question": "The argument is most vulnerable to which criticism?",
+    "choices": {"A": "It confuses what marathon runners do with what is necessary for performance.", "B": "It relies on a sample of marathon runners who may not represent all endurance athletes.", "C": "It fails to specify what kind of energy gels the runners consumed.", "D": "It draws a conclusion about necessity from a survey that only asked about habits."},
+    "correct": "A",
+    "explanation": "That runners commonly use energy gels does not mean the gels are essential — many runners may perform equally well without them. Common practice does not equal necessity."
+  },
+  {
+    "type": "Inference",
+    "stimulus": "All of the candidates who passed the written examination were invited to the interview stage. Only candidates who reached the interview stage were offered positions. Keiko was not offered a position.",
+    "question": "Which of the following can be properly concluded?",
+    "choices": {"A": "Keiko did not pass the written examination.", "B": "Keiko was not invited to the interview stage.", "C": "Either Keiko did not pass the written examination or she was not offered a position at the interview stage.", "D": "Keiko did not apply for the position."},
+    "correct": "C",
+    "explanation": "Keiko was not offered a position (stated). To be offered a position she needed to reach the interview; to reach the interview she needed to pass the exam. She must have failed at one of these two stages — choice C captures this disjunction correctly."
+  },
+  {
+    "type": "Principle",
+    "stimulus": "A homeowner refuses to install smoke detectors despite knowing that fires are more likely to be fatal without them, claiming that it is her right to make decisions about her own home.",
+    "question": "Which principle, if accepted, most strongly supports the government's right to mandate smoke detector installation despite this objection?",
+    "choices": {"A": "Property owners have an absolute right to make decisions about their own homes.", "B": "Individual autonomy yields to government regulation when the individual's decision places others — such as firefighters or neighboring residents — at significant risk.", "C": "The government has a duty to protect citizens from all foreseeable harms.", "D": "Safety regulations impose unfair burdens on homeowners."},
+    "correct": "B",
+    "explanation": "The key counterargument to the homeowner's autonomy claim is that her decision affects others (firefighters entering the home, neighbors in attached buildings) — choice B supports regulatory override on those grounds."
+  },
+  {
+    "type": "Weaken",
+    "stimulus": "The population of hawks in the nature preserve has declined by 30% since a wind farm was built nearby. The wind turbines must be killing the hawks.",
+    "question": "Which of the following, if true, most effectively weakens this conclusion?",
+    "choices": {"A": "The wind farm generated renewable energy that displaced a coal plant 50 miles away.", "B": "The hawk population in a similar preserve without a nearby wind farm has also declined by 28% over the same period.", "C": "Wind turbines have been documented to kill birds in other locations.", "D": "The wind farm was built over former woodland that hawks previously used for nesting."},
+    "correct": "B",
+    "explanation": "If a comparable preserve without turbines shows a nearly identical decline, the reduction is likely due to other factors — undermining the attribution to the wind farm."
+  },
+  {
+    "type": "Main Point",
+    "stimulus": "Legal scholars debate whether judicial opinions should be bound by the original intent of the framers of the Constitution or should evolve to reflect contemporary values. Originalists argue that constitutional interpretation must remain anchored to historical meaning to prevent unelected judges from imposing personal preferences. Living constitutionalists counter that a static reading of an 18th-century document cannot address 21st-century realities.",
+    "question": "The passage is primarily concerned with",
+    "choices": {"A": "arguing in favor of originalist constitutional interpretation.", "B": "presenting two competing theories of constitutional interpretation without endorsing either.", "C": "explaining why the Constitution should be amended more frequently.", "D": "criticizing the power of unelected judges in a democratic system."},
+    "correct": "B",
+    "explanation": "The passage presents both positions (originalism and living constitutionalism) fairly and does not take sides — it is expository, not argumentative."
+  },
+  {
+    "type": "Parallel Reasoning",
+    "stimulus": "No current students failed the midterm. Alice is a current student. Therefore, Alice did not fail the midterm.",
+    "question": "Which of the following most closely parallels this reasoning?",
+    "choices": {"A": "No tenured professors were laid off. Dr. Martin is a tenured professor. Therefore, Dr. Martin was not laid off.", "B": "All adjunct professors were offered new contracts. Dr. Martin is a tenured professor. Therefore, Dr. Martin was not offered a new contract.", "C": "No professors were laid off. Dr. Martin works at the university. Therefore, Dr. Martin was not laid off.", "D": "Some professors were laid off. Dr. Martin is a professor. Therefore, Dr. Martin may have been laid off."},
+    "correct": "A",
+    "explanation": "The original: No A is B; X is A; therefore X is not B. Choice A matches this structure exactly."
+  },
+  {
+    "type": "Flaw",
+    "stimulus": "Students at schools with longer school days score higher on tests. Therefore, we should increase school hours to improve test scores.",
+    "question": "The argument above assumes without justification that",
+    "choices": {"A": "longer school days are the cause of higher test scores, not merely associated with them.", "B": "test scores are the most important measure of student success.", "C": "students would be willing to attend longer school days.", "D": "schools with longer days also have better teachers."},
+    "correct": "A",
+    "explanation": "The argument commits the correlation-causation fallacy — schools with longer days might also have better resources, teachers, or student demographics that explain higher scores."
+  },
+  {
+    "type": "Inference",
+    "stimulus": "The only way to be admitted to the honors program is to maintain a GPA above 3.7. Trevor's GPA is 3.5.",
+    "question": "Which of the following must be true?",
+    "choices": {"A": "Trevor will not be admitted to the honors program.", "B": "Trevor is a poor student.", "C": "Trevor has not applied to the honors program.", "D": "The honors program requires more than just a high GPA."},
+    "correct": "A",
+    "explanation": "The only path in requires GPA > 3.7; Trevor has 3.5. He does not meet the condition, so he cannot be admitted."
+  },
+  {
+    "type": "Weaken",
+    "stimulus": "Neighborhoods with more trees have lower rates of violent crime. City planners should therefore plant more trees in high-crime areas to reduce violence.",
+    "question": "Which of the following most seriously undermines this recommendation?",
+    "choices": {"A": "Wealthier neighborhoods tend to have more trees, and wealth is independently associated with lower crime rates.", "B": "Trees are expensive to plant and maintain.", "C": "Some violent crimes occur outdoors in wooded areas.", "D": "The relationship between trees and crime has been observed in cities across multiple countries."},
+    "correct": "A",
+    "explanation": "Wealth explains both variables — richer areas have more trees and less crime. Planting trees in poor areas would not address the underlying socioeconomic factors driving crime."
+  },
+  {
+    "type": "Reading Comprehension",
+    "stimulus": "Strict liability in tort law holds a defendant responsible for harm caused by their actions regardless of fault or intent. It applies primarily in three contexts: abnormally dangerous activities, product liability, and the keeping of wild animals. The policy rationale is that those who engage in inherently dangerous activities for profit should bear the costs of the harms those activities inevitably produce, rather than shifting those costs to innocent victims.",
+    "question": "According to the passage, which of the following best describes the rationale for strict liability?",
+    "choices": {"A": "Defendants in strict liability cases are presumed to have acted with negligence.", "B": "Those who profit from dangerous activities should bear the costs of the harms those activities produce.", "C": "Strict liability deters businesses from engaging in dangerous activities.", "D": "Victims of dangerous activities are unable to prove negligence in court."},
+    "correct": "B",
+    "explanation": "The passage explicitly states the policy rationale: those who benefit from dangerous activities should absorb the resulting costs rather than passing them to innocent victims."
+  },
+  {
+    "type": "Strengthen",
+    "stimulus": "A dietary supplement company claims its product, which contains omega-3 fatty acids, reduces the risk of heart disease.",
+    "question": "Which of the following, if true, most supports this claim?",
+    "choices": {"A": "Omega-3 fatty acids are found naturally in fish, and populations with high fish consumption have lower rates of heart disease even after controlling for other dietary and lifestyle factors.", "B": "The supplement is cheaper than eating fish regularly.", "C": "Heart disease is the leading cause of death in developed countries.", "D": "The supplement has been approved for sale by the regulatory agency."},
+    "correct": "A",
+    "explanation": "Population data showing lower heart disease in high fish consumers, after controlling for confounds, provides meaningful evidence that omega-3s (the active compound) reduce cardiac risk."
+  },
+  {
+    "type": "Assumption",
+    "stimulus": "The city should replace its aging bus fleet with electric buses because electric vehicles produce no tailpipe emissions.",
+    "question": "The argument assumes which of the following?",
+    "choices": {"A": "Electric buses are cheaper to operate than diesel buses.", "B": "Tailpipe emissions from buses are a significant source of air pollution in the city.", "C": "The city has the infrastructure to charge a fleet of electric buses.", "D": "Electric vehicles produce no emissions at any stage of their lifecycle."},
+    "correct": "B",
+    "explanation": "If bus emissions are not a meaningful source of city air pollution, eliminating them would provide no meaningful environmental benefit — the assumption is that they matter."
+  },
+  {
+    "type": "Resolve",
+    "stimulus": "Despite advances in GPS navigation technology, the number of car accidents attributable to driver distraction has increased significantly over the past decade.",
+    "question": "Which of the following, if true, best explains this finding?",
+    "choices": {"A": "Smartphones, which serve as navigation devices but also as platforms for texts, calls, and social media, have proliferated far more rapidly than dedicated GPS units and create greater distraction overall.", "B": "GPS navigation systems are difficult to use while driving.", "C": "Newer cars have more sophisticated dashboards that are harder to operate.", "D": "Accident reporting standards have become more rigorous over the past decade."},
+    "correct": "A",
+    "explanation": "Smartphones replaced GPS units and introduced far greater distraction potential — navigation improved but the devices carrying it caused more accidents overall."
+  },
+  {
+    "type": "Main Point",
+    "stimulus": "Astronomers have long assumed that the universe's expansion is slowing due to gravitational attraction between galaxies. Recent observations of distant supernovae, however, suggest that the expansion is actually accelerating. This unexplained force driving acceleration has been termed 'dark energy.'",
+    "question": "The main point of this passage is that",
+    "choices": {"A": "dark energy is a form of anti-gravity that opposes gravitational attraction.", "B": "observations of distant supernovae contradict the long-held assumption that cosmic expansion is decelerating.", "C": "the universe is much larger than previously believed.", "D": "astronomers have discovered the source of dark energy."},
+    "correct": "B",
+    "explanation": "The passage presents the contradiction between prior assumption (slowing expansion) and new evidence (accelerating expansion) — this is the central finding, not a claim about what dark energy is."
+  },
+  {
+    "type": "Flaw",
+    "stimulus": "Our hospital's surgical complication rate is only 2%, lower than the national average of 4%. Therefore, our surgical team is more skilled than average.",
+    "question": "The argument is most vulnerable to which criticism?",
+    "choices": {"A": "It fails to account for the possibility that the hospital performs only low-risk surgeries while other hospitals handle more complex cases.", "B": "Complication rates are not a meaningful measure of surgical skill.", "C": "The national average includes hospitals that are clearly inferior.", "D": "The 2% complication rate may have been calculated using flawed methodology."},
+    "correct": "A",
+    "explanation": "Case mix matters — a hospital performing only low-risk procedures would naturally have a lower complication rate without being more skilled."
+  },
+  {
+    "type": "Weaken",
+    "stimulus": "Since the introduction of the new school lunch program providing free meals, student test scores improved by an average of 8%. The lunch program is responsible for this improvement.",
+    "question": "Which of the following, if true, most weakens this causal attribution?",
+    "choices": {"A": "The school also hired ten new teachers and implemented a new reading curriculum in the same semester the lunch program launched.", "B": "Students who participated more frequently in the lunch program showed slightly higher gains.", "C": "The lunch program has been praised by nutritionists.", "D": "Free lunch programs in other districts have also been associated with test score improvements."},
+    "correct": "A",
+    "explanation": "Multiple simultaneous interventions make it impossible to attribute the improvement to the lunch program specifically — the new teachers and curriculum are alternative explanations."
+  },
+  {
+    "type": "Principle",
+    "stimulus": "A tech company refuses to give law enforcement access to an encrypted device belonging to a terrorism suspect, arguing that building a 'backdoor' into encryption would compromise the security of all users.",
+    "question": "Which principle best supports the company's refusal?",
+    "choices": {"A": "Companies have no obligation to assist law enforcement in criminal investigations.", "B": "A security measure that protects many people from serious harm should not be compromised to facilitate investigation of a single case, even a serious one.", "C": "Individual privacy rights are absolute and cannot be overridden by law enforcement interests.", "D": "Encryption technology should be regulated by independent bodies rather than governments."},
+    "correct": "B",
+    "explanation": "The company's argument is about proportionality — the widespread harm of compromised encryption outweighs the benefit of accessing one device. Choice B captures this balancing principle."
+  },
+  {
+    "type": "Inference",
+    "stimulus": "All members of the planning committee voted for the proposal. No one outside the planning committee voted for the proposal. The proposal passed by a unanimous vote.",
+    "question": "Which of the following can be properly inferred?",
+    "choices": {"A": "The planning committee consists of all voters in the organization.", "B": "The planning committee voted unanimously among themselves.", "C": "Non-committee members were not eligible to vote.", "D": "The proposal was popular throughout the organization."},
+    "correct": "A",
+    "explanation": "All committee members voted for it and no non-committee members voted for it, yet the vote was unanimous — meaning all voters were committee members."
+  },
+  {
+    "type": "Resolve",
+    "stimulus": "In a study, participants who drank two cups of coffee per day were found to have significantly lower rates of Parkinson's disease than non-coffee drinkers. However, when the study controlled for smoking, the association disappeared.",
+    "question": "Which of the following best explains why the association disappeared when smoking was controlled for?",
+    "choices": {"A": "Smokers also tend to drink more coffee, and smoking may actually reduce Parkinson's risk, making coffee appear protective when the real protector is nicotine.", "B": "Coffee drinkers are generally healthier than non-coffee drinkers.", "C": "Smoking is more harmful than coffee, making its effects more statistically dominant.", "D": "The study was too small to detect a real association between coffee and Parkinson's."},
+    "correct": "A",
+    "explanation": "If smokers drink more coffee and smoking itself is protective, controlling for smoking removes the factor that was actually doing the work — exposing coffee as a spurious correlate."
+  },
+  {
+    "type": "Weaken",
+    "stimulus": "The government should subsidize electric vehicle purchases to reduce carbon emissions, since electric vehicles emit far less carbon per mile than gasoline-powered vehicles.",
+    "question": "Which of the following, if true, most weakens the case for the subsidy?",
+    "choices": {"A": "The electricity used to charge most electric vehicles in this country is generated primarily from coal-fired power plants, making their overall carbon footprint comparable to gasoline vehicles.", "B": "Electric vehicles are more expensive than gasoline vehicles.", "C": "Battery technology is improving rapidly, which will soon make electric vehicles more efficient.", "D": "Other countries already subsidize electric vehicle purchases."},
+    "correct": "A",
+    "explanation": "If electricity generation is coal-heavy, EVs' total lifecycle emissions may equal gasoline cars — the premise that EVs reduce carbon emissions would be false in this context."
+  },
+  {
+    "type": "Strengthen",
+    "stimulus": "A researcher argues that early childhood exposure to a second language accelerates overall language acquisition, even for the first language.",
+    "question": "Which of the following, if true, most strengthens this claim?",
+    "choices": {"A": "Children exposed to two languages from birth show faster development of phonological awareness — a key predictor of reading ability — in both languages compared to monolingual children matched for socioeconomic status.", "B": "Bilingual adults tend to be more open to learning additional languages later in life.", "C": "Many countries with high literacy rates have bilingual education systems.", "D": "Language acquisition is largely complete by age seven."},
+    "correct": "A",
+    "explanation": "Faster phonological awareness development in both languages, in a controlled comparison, directly supports the claim that bilingual exposure accelerates language acquisition."
+  },
+  {
+    "type": "Flaw",
+    "stimulus": "Ninety percent of people who buy lottery tickets do not win. Therefore, buying lottery tickets is almost certainly a waste of money.",
+    "question": "The reasoning is flawed because it",
+    "choices": {"A": "ignores the fact that winning requires only one ticket.", "B": "fails to weigh the magnitude of the potential prize against the cost of the ticket — the expected value may justify the purchase even with low odds.", "C": "assumes that all lottery players have the same financial circumstances.", "D": "confuses probability with certainty."},
+    "correct": "B",
+    "explanation": "Even with 90% non-winning odds, if the prize is large enough relative to ticket cost, the expected value of buying a ticket could be positive. The argument ignores expected value analysis."
+  },
+  {
+    "type": "Reading Comprehension",
+    "stimulus": "The Daubert standard, adopted by the U.S. Supreme Court in 1993, replaced the Frye standard as the federal test for the admissibility of expert scientific testimony. Under Daubert, trial judges act as 'gatekeepers,' evaluating whether proposed testimony is based on sufficient facts or data, reflects a reliable methodology, and has been applied reliably to the facts of the case. Factors courts may consider include peer review and publication, known or potential error rates, and general acceptance within the relevant scientific community.",
+    "question": "Under the Daubert standard, which of the following would be most relevant to a judge deciding whether to admit expert testimony?",
+    "choices": {"A": "Whether the expert is well-known in their field.", "B": "Whether the expert's methodology has been peer-reviewed and has a known error rate.", "C": "Whether the expert's conclusion supports the party that called them.", "D": "Whether other experts in the same case have reached the same conclusion."},
+    "correct": "B",
+    "explanation": "Daubert explicitly lists peer review and known error rates as relevant factors — these go to the reliability of the methodology, which is the standard's core inquiry."
+  },
+  {
+    "type": "Assumption",
+    "stimulus": "We should adopt a carbon tax to reduce greenhouse gas emissions because pricing carbon will cause businesses to reduce emissions to avoid the tax.",
+    "question": "Which of the following is a necessary assumption of this argument?",
+    "choices": {"A": "The revenue from the carbon tax should be returned to consumers.", "B": "Businesses are capable of reducing their emissions if financially motivated to do so.", "C": "A carbon tax is the most effective policy for reducing emissions.", "D": "All businesses currently produce greenhouse gas emissions."},
+    "correct": "B",
+    "explanation": "The argument assumes businesses can actually reduce emissions in response to the tax — if they have no feasible way to cut emissions, the tax would not achieve the goal."
+  },
+  {
+    "type": "Weaken",
+    "stimulus": "The best predictor of a country's economic growth is its investment in education. Countries that spend more per pupil consistently outperform those that spend less.",
+    "question": "Which of the following, if true, most weakens this claim?",
+    "choices": {"A": "Countries with higher education spending also tend to have stronger institutions, rule of law, and less corruption — factors independently associated with economic growth.", "B": "Some countries with low education spending have experienced rapid economic growth.", "C": "Educational attainment levels vary widely even among countries with similar spending levels.", "D": "Education spending figures may not capture differences in educational quality."},
+    "correct": "A",
+    "explanation": "If stronger institutions explain both higher education spending and economic growth, then spending on education may not be the causal driver — a confound undermines the 'best predictor' claim."
+  },
+  {
+    "type": "Resolve",
+    "stimulus": "Countries that enacted lockdowns during the pandemic had, on average, higher COVID-19 mortality rates than countries that did not enact lockdowns.",
+    "question": "Which of the following, if true, best resolves this apparent paradox?",
+    "choices": {"A": "Countries that enacted lockdowns tended to do so only after COVID-19 was already spreading rapidly, meaning they already had higher infection and mortality trajectories before the lockdown took effect.", "B": "Lockdowns damage economic activity, which in turn reduces healthcare funding.", "C": "Some lockdown countries had older populations, which are more vulnerable to COVID-19.", "D": "Compliance with lockdown measures varied significantly across countries."},
+    "correct": "A",
+    "explanation": "Selection bias — countries locked down because they were already in worse shape — explains why worse outcomes correlate with lockdowns without indicating lockdowns caused the outcomes."
+  },
+  {
+    "type": "Flaw",
+    "stimulus": "My neighbor switched to a plant-based diet and lost 20 pounds. Therefore, plant-based diets cause weight loss.",
+    "question": "The argument is flawed because it",
+    "choices": {"A": "relies on a single anecdote to establish a causal relationship that may not be generalizable.", "B": "assumes that weight loss is always a desirable outcome.", "C": "fails to define what counts as a 'plant-based' diet.", "D": "does not account for the difficulty of maintaining a plant-based diet."},
+    "correct": "A",
+    "explanation": "A single anecdote cannot establish causation — the neighbor may have also exercised more, reduced calories generally, or had other factors at play."
+  },
+  {
+    "type": "Main Point",
+    "stimulus": "Economists traditionally define rational behavior as maximizing utility. Behavioral economists have demonstrated, however, that people systematically deviate from this model in predictable ways — overweighting losses relative to gains, anchoring decisions to arbitrary reference points, and discounting future rewards at inconsistent rates. These findings suggest that the rational actor model is descriptively inadequate as a basis for economic prediction.",
+    "question": "The main conclusion of this passage is that",
+    "choices": {"A": "people are fundamentally irrational and cannot make good decisions.", "B": "the traditional economic model of rational behavior fails to accurately describe how people actually make decisions.", "C": "behavioral economics has replaced traditional economics.", "D": "loss aversion is the most important cognitive bias in economic decision-making."},
+    "correct": "B",
+    "explanation": "The passage argues that systematic deviations from the rational actor model render it descriptively inadequate — not that people are entirely irrational or that traditional economics is dead."
+  },
+  {
+    "type": "Principle",
+    "stimulus": "A judge imposes a lighter sentence on a defendant who committed a non-violent crime during a period of severe economic hardship, citing the circumstances as a mitigating factor.",
+    "question": "Which principle best supports the judge's approach to sentencing?",
+    "choices": {"A": "Sentences for non-violent crimes should always be lighter than those for violent crimes.", "B": "The circumstances surrounding a crime, including economic hardship, are relevant to assessing culpability and should be considered in sentencing.", "C": "Judges should not consider external circumstances when applying the law.", "D": "Economic hardship is a complete defense to non-violent crimes."},
+    "correct": "B",
+    "explanation": "The judge used circumstances as a mitigating factor — choice B supports the relevance of context to culpability without excusing the crime entirely."
+  },
+  {
+    "type": "Inference",
+    "stimulus": "All contracts that lack consideration are voidable at the option of one party. This agreement lacks consideration. Furthermore, all voidable contracts can be ratified by subsequent conduct.",
+    "question": "Which of the following can be properly inferred?",
+    "choices": {"A": "This agreement is void and cannot be enforced.", "B": "This agreement is voidable and could potentially be ratified.", "C": "This agreement will automatically be voided by a court.", "D": "Ratification of this agreement requires a new agreement with consideration."},
+    "correct": "B",
+    "explanation": "The agreement lacks consideration → it is voidable. All voidable contracts can be ratified by subsequent conduct → this one can be ratified. Choice B follows from both premises."
+  },
+  {
+    "type": "Weaken",
+    "stimulus": "Self-driving vehicles will reduce traffic fatalities because the majority of accidents are caused by human error, and autonomous vehicles eliminate human error.",
+    "question": "Which of the following, if true, most weakens this argument?",
+    "choices": {"A": "Autonomous vehicle software can malfunction or be fooled by unusual road conditions, edge cases, or sensor interference — creating a new category of machine error.", "B": "Self-driving vehicles are currently more expensive than conventional vehicles.", "C": "Human drivers are more adaptable to unexpected situations than current AI systems.", "D": "Regulatory approval for self-driving vehicles is still pending in many jurisdictions."},
+    "correct": "A",
+    "explanation": "The argument assumes autonomous vehicles have no errors — if machine error replaces human error (perhaps at comparable rates), the predicted reduction in fatalities would not materialize."
+  },
+  {
+    "type": "Strengthen",
+    "stimulus": "Economists argue that rent control policies, despite being intended to help low-income renters, actually reduce the supply of affordable housing.",
+    "question": "Which of the following most directly supports this claim?",
+    "choices": {"A": "Landlords in cities with rent control are more likely to convert rental units to condominiums or allow properties to deteriorate rather than maintain them at controlled rents, reducing the supply of rental housing over time.", "B": "Rent control policies are politically popular in many cities.", "C": "Low-income renters benefit from stable, predictable rent payments.", "D": "Cities without rent control have higher rents on average."},
+    "correct": "A",
+    "explanation": "Landlord behavior in response to rent control — converting units or allowing deterioration — provides a direct mechanism by which rent control reduces housing supply."
+  },
+  {
+    "type": "Flaw",
+    "stimulus": "The fact that crime rates fell after police officers began wearing body cameras proves that body cameras deter crime.",
+    "question": "The argument is most vulnerable to the criticism that it",
+    "choices": {"A": "fails to rule out other factors that may have caused crime rates to fall during the same period.", "B": "assumes that police officers support the use of body cameras.", "C": "overstates the magnitude of the crime rate reduction.", "D": "relies on crime statistics that may be inaccurate."},
+    "correct": "A",
+    "explanation": "Post hoc ergo propter hoc — assuming that because B followed A, A caused B. Without controlling for other variables (economic conditions, other policing changes), the causal attribution is unwarranted."
+  },
+  {
+    "type": "Weaken",
+    "stimulus": "The mayor proposes closing a downtown homeless shelter, arguing that it attracts crime to the surrounding blocks and that property values near shelters are lower than in comparable areas.",
+    "question": "Which of the following most seriously challenges the mayor's reasoning?",
+    "choices": {"A": "Studies controlling for prior neighborhood conditions have found that homeless shelters do not cause increases in crime and that property value differences pre-date shelter openings.", "B": "The shelter serves over 200 people nightly.", "C": "Other cities have experimented with closing shelters with mixed results.", "D": "Property values near shelters have risen in some cities."},
+    "correct": "A",
+    "explanation": "If crime rates don't increase and property value differences pre-existed the shelter, both causal claims in the mayor's argument are undermined simultaneously."
+  },
+  {
+    "type": "Reading Comprehension",
+    "stimulus": "The commerce clause of the U.S. Constitution grants Congress the power to regulate commerce among the states. Courts have interpreted this broadly to include not just the movement of goods across state lines, but also activities that substantially affect interstate commerce. This expansive interpretation reached its apex in Wickard v. Filburn (1942), where the Supreme Court held that a farmer growing wheat for his own consumption could be regulated because, in the aggregate, such activity affected national wheat prices.",
+    "question": "The Wickard decision is most significant for which proposition?",
+    "choices": {"A": "Congress may regulate any economic activity, regardless of its scale or effects.", "B": "Even purely local, non-commercial activity may be regulated under the commerce clause if, in the aggregate across many actors, it substantially affects interstate commerce.", "C": "The commerce clause grants Congress unlimited legislative power over all economic matters.", "D": "Farmers who grow food for personal consumption are engaged in interstate commerce."},
+    "correct": "B",
+    "explanation": "Wickard extended commerce clause power to purely local, personal-use activity based on the aggregate effects theory — the individual farmer's wheat affected national prices when aggregated with all similar farmers."
+  },
+  {
+    "type": "Assumption",
+    "stimulus": "Judge Alvarez consistently rules in favor of plaintiffs in discrimination cases. She must be biased against defendant employers.",
+    "question": "The argument depends on which of the following assumptions?",
+    "choices": {"A": "Discrimination cases brought before Judge Alvarez are not meritorious.", "B": "A judge who rules consistently in favor of one party must be doing so for reasons other than the merits of the cases.", "C": "Judge Alvarez has a personal history that predisposes her to side with plaintiffs.", "D": "Other judges rule less consistently in discrimination cases."},
+    "correct": "B",
+    "explanation": "The argument jumps from 'consistent rulings' to 'bias.' This requires assuming consistent outcomes cannot result from the cases consistently having merit — which is the hidden, questionable assumption."
+  }
+]

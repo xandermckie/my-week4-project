@@ -51,6 +51,11 @@
         </a>
 
         <a href="{{ url_for('profile.profile') }}">Profile</a>
+        {% if current_tier == "pro" %}
+          <span class="nav__pro-badge">PRO</span>
+        {% else %}
+          <a class="nav__upgrade-link" href="{{ url_for('billing.upgrade') }}">Upgrade</a>
+        {% endif %}
         <a href="{{ url_for('auth.logout') }}">Log Out</a>
       {% else %}
         <a href="{{ url_for('auth.login') }}">Log In</a>
