@@ -858,8 +858,10 @@ body {
 }
 
 .quiz-card,
-.stat-card,
-.glass-card { position: relative; overflow: hidden; }
+.stat-card { position: relative; overflow: hidden; }
+
+/* glass-card must NOT clip so absolutely-positioned children (badges) are visible */
+.glass-card { position: relative; overflow: visible; }
 
 /* ===== Nav extras — Pro badge / Upgrade link ===== */
 .nav__pro-badge {
@@ -909,6 +911,9 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 1.25rem;
   margin-bottom: 2rem;
+  /* room for the absolutely-positioned "Most Popular" badge above the pro card */
+  margin-top: 1rem;
+  padding-top: .75rem;
 }
 @media (max-width: 620px) { .tier-grid { grid-template-columns: 1fr; } }
 
@@ -936,6 +941,18 @@ body {
   font-family: var(--font-serif);
   font-size: 1.4rem;
   margin-bottom: 1rem;
+  display: flex; align-items: baseline; gap: .5rem;
+}
+.tier-card__price-inline {
+  font-family: var(--font-sans); font-size: .85rem; font-weight: 500;
+  color: var(--color-text-muted);
+}
+.tier-card__cta {
+  display: inline-block;
+  margin-top: 1.25rem;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
 }
 .tier-card__features {
   list-style: none;
